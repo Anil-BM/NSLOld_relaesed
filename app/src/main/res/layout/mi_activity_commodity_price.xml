@@ -1,0 +1,305 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    tools:context="com.nsl.beejtantra.marketintelligencenew.CommodityPriceActivity">
+
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:theme="@style/MyToolbar"
+        app:title=""
+        app:titleTextColor="@color/white">
+
+        <com.nsl.beejtantra.commonutils.CustomTextViewBold
+            android:id="@+id/toolbar_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="@string/commodity_price"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16sdp" />
+
+    </android.support.v7.widget.Toolbar>
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_margin="@dimen/_10sdp">
+
+        <com.nsl.beejtantra.commonutils.CustomTextViewLight
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_end_time"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:gravity="left"
+            android:text="Region"
+            android:textColor="@color/textgraycolor"
+            android:textSize="@dimen/_10sdp" />
+        <Spinner
+            android:id="@+id/spin_region"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:background="@drawable/spinner_bg" />
+
+        <include layout="@layout/line_view" />
+    <com.nsl.beejtantra.commonutils.CustomTextViewLight
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_end_time"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:gravity="left"
+        android:text="@string/District"
+        android:textColor="@color/textgraycolor"
+        android:textSize="@dimen/_10sdp"/>
+
+    <AutoCompleteTextView
+        android:id="@+id/et_commodityprice_district"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        android:background="@drawable/bgr"
+        android:inputType="textCapSentences"
+        android:hint=""
+        android:gravity="center"
+        android:padding="@dimen/_8sdp"
+        android:focusable="true"
+        android:textColor="@color/black"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:textSize="@dimen/_11sdp"
+        />
+
+    <com.nsl.beejtantra.commonutils.CustomTextViewLight
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_end_time"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:gravity="left"
+        android:text="@string/Taluka"
+        android:textColor="@color/textgraycolor"
+        android:textSize="@dimen/_10sdp"/>
+
+    <com.nsl.beejtantra.CustomEditTextNormal
+        android:id="@+id/et_commodityprice_taluka"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        android:background="@drawable/bgr"
+        android:textColor="@color/black"
+        android:gravity="center"
+        android:focusable="true"
+        android:inputType="textCapSentences"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:textSize="@dimen/_11sdp"
+        />
+
+    <com.nsl.beejtantra.commonutils.CustomTextViewLight
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/et_end_time"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:gravity="left"
+        android:text="@string/Village"
+        android:textColor="@color/textgraycolor"
+        android:textSize="@dimen/_10sdp"/>
+
+    <com.nsl.beejtantra.CustomEditTextNormal
+        android:id="@+id/et_commodityprice_village"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        android:background="@drawable/bgr"
+        android:textColor="@color/black"
+        android:inputType="textCapSentences"
+        android:layout_marginTop="@dimen/_3sdp"
+        android:textSize="@dimen/_11sdp"
+        android:gravity="center"
+        android:focusable="true"
+        />
+
+    <LinearLayout
+        android:id="@+id/ll_select"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_15sdp"
+        >
+
+        <com.nsl.beejtantra.commonutils.CustomTextViewLight
+            android:id="@+id/text_company"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:textSize="@dimen/_10sdp"
+            android:text="@string/select_division"
+            android:textColor="@color/textgraycolor" />
+
+        <Spinner
+            android:id="@+id/spin_commodityprice_division"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:focusable="true"
+            android:background="@drawable/spinner_bg" />
+
+        <include layout="@layout/line_view" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_select1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginTop="@dimen/_15sdp"
+        >
+
+        <com.nsl.beejtantra.commonutils.CustomTextViewLight
+            android:id="@+id/text_company1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:textSize="@dimen/_10sdp"
+            android:text="@string/select_crop"
+            android:textColor="@color/textgraycolor" />
+
+        <Spinner
+            android:id="@+id/spin_commodityprice_crop"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:layout_marginBottom="@dimen/_2sdp"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:background="@drawable/spinner_bg" />
+
+        <include layout="@layout/line_view" />
+    </LinearLayout>
+
+        <com.nsl.beejtantra.commonutils.CustomTextViewLight
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_end_time"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:gravity="left"
+            android:text="@string/segment"
+            android:textColor="@color/textgraycolor"
+            android:textSize="@dimen/_10sdp"/>
+
+        <com.nsl.beejtantra.CustomEditTextNormal
+            android:id="@+id/et_commodityprice_segment"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/bgr"
+            android:inputType="textCapSentences"
+            android:hint=""
+            android:gravity="center"
+            android:padding="@dimen/_8sdp"
+            android:focusable="true"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:textSize="@dimen/_11sdp"
+            />
+
+        <com.nsl.beejtantra.commonutils.CustomTextViewLight
+            android:id="@+id/tv_apmc_mandi_price"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_end_time"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:gravity="left"
+            android:text="@string/apmc_mandiprice"
+            android:textColor="@color/textgraycolor"
+            android:textSize="@dimen/_10sdp"/>
+
+        <com.nsl.beejtantra.CustomEditTextNormal
+            android:id="@+id/et_commodityprice_apmc_mandiprice"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/bgr"
+            android:inputType="number"
+            android:hint=""
+            android:gravity="center"
+            android:padding="@dimen/_8sdp"
+            android:focusable="true"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:textSize="@dimen/_11sdp"
+            />
+
+        <com.nsl.beejtantra.commonutils.CustomTextViewLight
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_end_time"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:gravity="left"
+            android:text="@string/commodity_dealer_commission_agentprice"
+            android:textColor="@color/textgraycolor"
+            android:textSize="@dimen/_10sdp"/>
+
+        <com.nsl.beejtantra.CustomEditTextNormal
+            android:id="@+id/et_commodityprice_dealer"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/bgr"
+            android:inputType="number"
+            android:hint=""
+            android:gravity="center"
+            android:padding="@dimen/_8sdp"
+            android:focusable="true"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:textSize="@dimen/_11sdp"
+            />
+
+        <com.nsl.beejtantra.commonutils.CustomTextViewLight
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/et_end_time"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:gravity="left"
+            android:text="@string/purchase_price_industry"
+            android:textColor="@color/textgraycolor"
+            android:textSize="@dimen/_10sdp"/>
+
+        <com.nsl.beejtantra.CustomEditTextNormal
+            android:id="@+id/et_commodityprice_purchase"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_35sdp"
+            android:background="@drawable/bgr"
+            android:inputType="number"
+            android:hint=""
+            android:gravity="center"
+            android:padding="@dimen/_8sdp"
+            android:focusable="true"
+            android:textColor="@color/black"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:textSize="@dimen/_11sdp"
+            />
+
+        <com.nsl.beejtantra.commonutils.CustomTextViewBold
+            android:id="@+id/save_commodity_price"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_20sdp"
+            android:gravity="center"
+            android:layout_gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/save"
+            android:background="@drawable/background_green"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_12sdp"/>
+
+    </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

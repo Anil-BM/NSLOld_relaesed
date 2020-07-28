@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <com.nsl.beejtantra.commonutils.CustomTextViewBold
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="@dimen/_10sdp"
+        android:text="Please Select"
+        android:textColor="@android:color/black"
+        android:textSize="@dimen/_15sdp" />
+
+    <ListView
+        android:id="@+id/options_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/options_bottom_layout"
+        android:layout_below="@+id/title"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:divider="@null">
+
+    </ListView>
+
+    <LinearLayout
+        android:id="@+id/options_bottom_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center"
+        android:paddingBottom="@dimen/_10sdp"
+        android:paddingTop="@dimen/_10sdp"
+        android:weightSum="2">
+
+
+        <com.nsl.beejtantra.commonutils.CustomTextViewBold
+            android:id="@+id/options_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:background="@color/colorPrimary"
+            android:gravity="center"
+            android:padding="@dimen/_10sdp"
+            android:text="CANCEL"
+            android:textColor="@android:color/white" />
+        <com.nsl.beejtantra.commonutils.CustomTextViewBold
+            android:id="@+id/options_submit"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:background="@color/green"
+            android:gravity="center"
+            android:padding="@dimen/_10sdp"
+            android:text="SUBMIT"
+            android:textColor="@android:color/white" />
+
+    </LinearLayout>
+</RelativeLayout>

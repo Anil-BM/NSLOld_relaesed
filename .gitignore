@@ -1,0 +1,15 @@
+*.iml
+.gradle
+/local.properties
+/.idea/workspace.xml
+/.idea/libraries
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+/library/build
+
+# Project exclude paths
+/MapmyIndiaGLAndroidSDK_v6.7.3/build/
+/robotolibrary/build/
+/robotolibrary/build/intermediates/javac/debug/classes/

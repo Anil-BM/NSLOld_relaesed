@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.nsl.beejtantra.orderindent.HistoryDetailsActivity">
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            android:titleTextColor="@color/white"
+            app:titleTextColor="@color/white">
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewBold
+                android:id="@+id/toolbar_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="Approvals History"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_16sdp" />
+
+        </android.support.v7.widget.Toolbar>
+
+    </android.support.design.widget.AppBarLayout>
+
+    <com.nsl.beejtantra.commonutils.CustomTextViewBold
+        android:id="@+id/product"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_yellow"
+        android:padding="@dimen/_10sdp"
+        android:text="PRODUCT"
+        android:textSize="@dimen/_11sdp" />
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/listView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:divider="@null">
+
+    </android.support.v7.widget.RecyclerView>
+
+    <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+        android:id="@+id/tv_alert"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_35sdp"
+        android:background="@color/yellow"
+        android:gravity="center"
+        android:padding="@dimen/_6sdp"
+        android:text="@string/no_records_found"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10sdp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+</LinearLayout>

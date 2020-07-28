@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <ImageView
+        android:id="@+id/img_warning"
+        android:layout_width="100dp"
+
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="372dp"
+        app:srcCompat="@drawable/ic_warning_black_24dp"
+        tools:ignore="VectorDrawableCompat" />
+
+    <TextView
+        android:id="@+id/scan_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/img_warning"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="2dp"
+        android:layout_marginEnd="156dp"
+        android:paddingTop="25dp"
+        android:text="Scan eroor"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/_12sdp"
+        app:layout_anchor="@id/img_warning"
+        app:layout_anchorGravity="bottom|center_horizontal" />
+
+    <TextView
+        android:id="@+id/scan_again_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/scan_error"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginTop="-2dp"
+        android:layout_marginEnd="101dp"
+        android:onClick="scan_manually"
+        android:paddingTop="25dp"
+        android:text="Scan Manually"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/_20sdp"
+        app:layout_anchor="@id/img_warning"
+        app:layout_anchorGravity="bottom|center_horizontal" />
+
+    <ProgressBar
+        android:id="@+id/progressBar_in_scanner"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_above="@+id/confirm_btn"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_centerInParent="true"
+        android:layout_gravity="center"
+        android:layout_marginStart="202dp"
+        android:layout_marginTop="481dp"
+        android:layout_marginEnd="283dp"
+        android:layout_marginBottom="423dp"
+        android:indeterminateTint="@color/colorPrimary"
+        android:visibility="invisible" />
+
+    <TextView
+        android:id="@+id/fab_scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|right"
+        android:layout_marginRight="14dp"
+        android:layout_marginBottom="75dp"
+        android:background="@drawable/chip_in_scan"
+        android:drawablePadding="10dp"
+        android:onClick="scan_again"
+        android:layout_alignParentEnd="true"
+        android:orientation="horizontal"
+        android:text="Re-scan"
+        android:layout_alignParentBottom="true"
+        android:textColor="@android:color/white"
+        android:textSize="13dp"
+        android:textStyle="normal" />
+    <Button
+        android:id="@+id/confirm_btn"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_gravity="bottom"
+        android:background="@color/colorPrimary"
+        android:text="Confirm"
+        android:gravity="center"
+        android:visibility="gone"
+        android:layout_alignParentBottom="true"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="15dp"
+        android:textStyle="bold" />
+
+
+
+
+        <ProgressBar
+        android:id="@+id/progressBar_in_scanner"
+        style="?android:attr/progressBarStyleLarge"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_above="@+id/confirm_btn"
+        android:visibility="invisible" />
+
+
+
+</RelativeLayout>-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+
+    android:orientation="vertical"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:id="@+id/laoding"
+        android:orientation="vertical"
+      >
+    <ImageView
+        android:id="@+id/img_warning"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_gravity="center"
+        app:srcCompat="@drawable/ic_warning_black_24dp"
+        tools:ignore="VectorDrawableCompat" />
+    <TextView
+        android:id="@+id/scan_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Scan eroor"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/_12sdp"
+        app:layout_anchor="@id/img_warning"
+        app:layout_anchorGravity="bottom|center_horizontal" />
+    <TextView
+    android:id="@+id/scan_again_error"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+    android:textColor="@color/colorPrimary"
+    android:onClick="scan_manually"
+    android:paddingTop="25dp"
+    android:gravity="center"
+        android:visibility="gone"
+    android:textSize="@dimen/_20sdp"
+    android:text="Scan Manually"
+    app:layout_anchor="@id/img_warning"
+    app:layout_anchorGravity="bottom|center_horizontal" />
+
+    <TextView
+        android:id="@+id/fab_scan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="@style/Base.TextAppearance.AppCompat.Large"
+        android:onClick="scan_again"
+        android:gravity="center"
+        android:textSize="@dimen/_20sdp"
+        android:drawablePadding="10dp"
+        android:layout_marginTop="@dimen/_14sdp"
+        android:background="@drawable/chip_in_scan"
+        android:textColor="@android:color/white"
+        android:text="Re-scan"
+        app:layout_anchor="@id/img_warning"
+        app:layout_anchorGravity="bottom|center_horizontal" />
+
+
+
+
+</LinearLayout>
+    <ProgressBar
+        android:id="@+id/progressBar_in_scanner"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_gravity="center"
+        style="?android:attr/progressBarStyleLarge"
+        android:indeterminateTint="@color/colorPrimary"
+        android:visibility="invisible" />
+</LinearLayout>

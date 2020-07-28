@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@mipmap/ic_home"
+        android:title="HOME"
+        />
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@mipmap/ic_profile"
+        android:title="PROFILE" />
+    <item
+        android:id="@+id/nav_change_password"
+        android:icon="@mipmap/ic_fieldestimation"
+        android:title="@string/Change_Password" />
+
+    <item
+        android:id="@+id/nav_planner"
+        android:icon="@mipmap/ic_planner"
+        android:visible="false"
+        android:title="PLANNER" />
+
+    <item
+        android:id="@+id/nav_distributors"
+        android:icon="@mipmap/ic_distributors"
+        android:visible="false"
+        android:title="DISTRIBUTORS" />
+
+    <item
+        android:id="@+id/nav_schemes"
+        android:icon="@mipmap/ic_schemes"
+        android:visible="false"
+        android:title="SCHEMES" />
+    <item
+        android:id="@+id/nav_advancebooking"
+        android:icon="@mipmap/ic_advancebooking"
+        android:visible="false"
+        android:title="ADVANCE BOOKING" />
+    <item
+        android:id="@+id/nav_products"
+        android:icon="@mipmap/ic_products"
+        android:visible="false"
+        android:title="PRODUCTS" />
+    <item
+        android:id="@+id/nav_orderindent"
+        android:icon="@mipmap/ic_orderindent"
+        android:visible="false"
+        android:title="ORDER INDENT" />
+    <item
+        android:id="@+id/nav_paymentcollection"
+        android:icon="@mipmap/ic_paymentcollection"
+        android:visible="false"
+        android:title="PAYMENT COLLECTIONS" />
+    <item
+        android:id="@+id/nav_marketintelligence"
+        android:icon="@mipmap/ic_marketintelligence"
+        android:visible="false"
+        android:title="MARKET INTELLIGENCE" />
+    <item
+        android:id="@+id/nav_stockmovements"
+        android:icon="@mipmap/ic_stockmovements"
+        android:visible="false"
+        android:title="STOCK SUPPLY" />
+    <item
+        android:id="@+id/nav_stockreturns"
+        android:icon="@mipmap/ic_stockmovements"
+        android:visible="false"
+        android:title="STOCK RETURNS" />
+    <item
+        android:id="@+id/nav_routemap"
+        android:icon="@mipmap/ic_routemap"
+        android:visible="false"
+        android:title="ROUTE MAP" />
+    <item
+        android:id="@+id/nav_feedback"
+        android:icon="@mipmap/ic_feedback"
+        android:visible="false"
+        android:title="FEEDBACK" />
+    <item
+        android:id="@+id/nav_complaints"
+        android:icon="@mipmap/ic_complaints"
+        android:visible="false"
+        android:title="SEEDS CLINIC" />
+
+    <item
+        android:id="@+id/nav_daily_dairy"
+        android:icon="@mipmap/ic_dailydairy"
+        android:visible="false"
+        android:title="DAILY DIARY" />
+
+    <item
+        android:id="@+id/nav_yield_estimation"
+        android:icon="@mipmap/ic_yieldestimation"
+        android:visible="false"
+        android:title="YIELD ESTIMATION" />
+    <item
+        android:id="@+id/nav_payment_approval"
+        android:icon="@mipmap/ic_paymentcollection"
+        android:visible="false"
+        android:title="PAYMENT APPROVAL" />
+
+    <item android:id="@+id/nav_godown"
+        android:icon="@drawable/go_down"
+        android:visible="false"
+        android:title="GODOWN"/>
+    <item android:id="@+id/nav_geotagging"
+        android:icon="@drawable/ic_location_pin_icon"
+        android:visible="false"
+        android:title="GEOTAGGING"/>
+
+    <item
+        android:id="@+id/nav_logout"
+        android:icon="@mipmap/ic_logout"
+        android:title="LOGOUT"
+        android:visible="false"></item>
+    <item
+        android:id="@+id/nav_masterdata"
+        android:icon="@mipmap/ic_logout"
+        android:title="SYNC MASTER DATA"
+       ></item>
+    <item
+        android:id="@+id/nav_userdata"
+        android:icon="@mipmap/ic_logout"
+        android:title="DATA SYNCING"
+       ></item>
+
+    <item
+        android:id="@+id/nav_coupons"
+        android:icon="@mipmap/ic_logout"
+        android:title="FARMER COUPONS SYNC"
+        android:visible="false"
+        ></item>
+    <!--<item
+        android:id="@+id/nav_version"
+        ></item>-->
+<!--
+ <item
+        android:id="@+id/nav_autostart"
+        android:icon="@mipmap/ic_logout"
+        android:title="Auto Start"
+       ></item>
+    <item
+        android:id="@+id/nav_copy"
+        android:icon="@mipmap/ic_logout"
+        android:title="Copy GPS Status"
+       ></item>
+-->
+
+
+</menu>

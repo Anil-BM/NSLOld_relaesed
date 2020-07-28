@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.nsl.beejtantra">
+
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.READ_PROFILE" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.USE_CREDENTIALS" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CALL_PHONE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.GET_TASKS" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS" />
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+    <uses-permission android:name="android.permission.BIND_ACCESSIBILITY_SERVICE" />
+    <!--
+        <uses-feature android:name="android.hardware.camera" />
+        <uses-feature android:name="android.hardware.camera.autofocus" />
+    -->
+    <uses-feature
+        android:name="android.hardware.camera.any"
+        android:required="true" />
+    <uses-feature
+        android:name="android.hardware.camera.autofocus"
+        android:required="false" />
+
+    <permission
+        android:name="com.nsl.beejtantra.permission.MAPS_RECEIVE"
+        android:protectionLevel="signature" />
+
+    <uses-permission android:name="com.muhoortams.aandroidapp.permission.MAPS_RECEIVE" /> <!-- Required OpenGL ES 2.0. for Maps V2 -->
+    <uses-feature
+        android:glEsVersion="0x00020000"
+        android:required="true" />
+
+    <application
+        android:name=".MyApplication"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity android:name=".FarmerCoupans.GeoTaggingMapActivityforFarmerCoupans"></activity>
+        <activity android:name=".FarmerCoupans.Manualscreen" />
+        <activity android:name=".FarmerCoupans.Scanner" />
+        <activity android:name=".FarmerCoupans.CoupanForm">
+
+        </activity>
+        <activity android:name=".FarmerCoupans.Activityfarmercoupon" />
+        <activity android:name=".TFA.Main2Activity" />
+        <activity
+            android:name=".TFA.ActivityIndentForm"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".AnyOrientationCaptureActivity"
+            android:screenOrientation="fullSensor"
+            android:stateNotNeeded="true"
+            android:theme="@style/zxing_CaptureTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".TFA.ActivityIndent"
+            android:screenOrientation="portrait" />
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_launcher" />
+        <!--
+             Set color used with incoming notification messages. This is used when no color is set for the incoming
+             notification message. See README(https://goo.gl/6BKBk7) for more.
+        -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_color"
+            android:resource="@color/colorAccent" /> <!-- [END fcm_default_icon] -->
+        <!-- [START fcm_default_channel] -->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="@string/default_notification_channel_id" /> <!-- [END fcm_default_channel] -->
+        <!--
+        <meta-data
+        android:name=".MyApplication"
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+android:name="android.support.multidex.MultiDexApplication"
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+        -->
+        <activity
+            android:name=".SplashScreen"
+            android:label="@string/app_name"
+            android:theme="@style/Theme.AppCompat"> <intent-filter>
+            <action android:name="android.intent.action.MAIN" />
+
+            <category android:name="android.intent.category.LAUNCHER" />
+        </intent-filter></activity>
+        <activity android:name=".MainActivity" />
+
+        <service android:name=".MyFirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".MyFirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+        <!--
+            <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyBpgID2ZhZ-hTJJhylTw1rl-DLUAb0zHDM" />
+        -->
+        <meta-data
+            android:name="com.google.android.maps.v2.API_KEY"
+            android:value="AIzaSyBxY-hkH-tCLLaP2ajbMUz9EnQYUn05TLI" />
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity android:name=".MapActivity" />
+        <activity
+            android:name=".LoginActivity"
+            android:label="@string/title_activity_login"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".advancebooking.NewAdvancebokingActivity" />
+        <activity android:name=".advancebooking.AdvanceBookingMainActivity" />
+        <activity android:name=".MainBankDetailsActivity" />
+        <activity android:name=".orderindent.OrderIndentMainActivity" />
+        <activity android:name=".MainDailyDiaryActivity" />
+        <activity android:name=".PostRouteMapActivityCopy" />
+        <activity android:name=".advancebooking.NewAdvancebokingCustomersActivity" />
+        <activity android:name=".NewOrderindentActivity" />
+        <activity android:name=".orderindent.NewSalesOrderChooseActivity" />
+        <activity android:name=".stockmovement.NewStockMovementChooseActivity" />
+        <activity android:name=".stockmovement.CropsFragmentViewStockMovementActivity" />
+        <activity android:name=".DistributorsViewStockMovementActivity" />
+        <activity android:name=".NewViewStockMovementChooseActivity" />
+        <activity android:name=".stockmovement.CropsFragmentStockMovementActivity" />
+        <activity android:name=".stockmovement.StockMovementMainActivity" />
+        <activity android:name=".NewOrderindentCustomersActivity" />
+        <activity android:name=".OrdrerIndentdivisionsActivity" />
+        <activity
+            android:name=".advancebooking.NewAdvancebokingChooseActivity"
+            android:windowSoftInputMode="stateHidden|adjustResize" />
+        <activity android:name=".advancebooking.ViewBookings1Activity" />
+        <activity android:name=".orderindent.ViewSalesOrderBookingsActivity" />
+        <activity android:name=".orderindent.ViewSalesOrderCompanyActivity" />
+        <activity android:name=".orderindent.ViewSalesOrderCustomerDetailsActivity" />
+        <activity android:name=".SchemesActivity" />
+        <activity android:name=".SchemesDetailsActivity" />
+        <activity android:name=".NewPaymentCollectionDistributorsActivity" />
+        <activity android:name=".Payment_collection_detailsActivity" />
+        <activity android:name=".PaymentActivity" />
+        <activity android:name=".PlanerDetailActivity" />
+        <activity android:name=".oreo.PlanerOneActivity" />
+        <activity android:name=".PlanerTypeActivity" />
+        <activity android:name=".PlanScheduleFormActivity" />
+        <activity android:name=".PlanEventFormActivity" />
+        <activity android:name=".PlanerMainActivity" />
+        <activity android:name=".PlannerTaskActivity" />
+        <activity android:name=".ProfileMainActivity" />
+        <activity android:name=".PaymentCollectionPaymentTypeActivity" />
+        <activity android:name=".feedback.FeedbackallActivity" />
+        <activity android:name=".complaints.ComplaintsallActivity" />
+        <activity android:name=".Paymentcollection_All_Activity" />
+        <activity android:name=".feedback.MainFeedbackActivity" />
+        <activity android:name=".complaints.MainComplaintsActivity" />
+        <activity android:name=".dailydairy.DailyDairyActivity" />
+        <activity android:name=".dailydairy.DailyDairyForm" />
+        <activity android:name=".PaymentAll" />
+        <activity android:name=".retailers.AllRetailersActivity" />
+        <activity android:name=".retailers.MainRetailerActivity" />
+        <activity android:name=".retailers.Retailerdetails" />
+        <activity android:name=".orderindent.ViewMOTeamOrderIndentActivity" />
+        <activity android:name=".marketintelligencenew.MarketIntelligenceAcivityCopy" />
+        <activity
+            android:name=".SampleFloatingActiity"
+            android:label="@string/title_activity_sample_floating_actiity"
+            android:theme="@style/AppTheme" />
+
+        <receiver
+            android:name=".ConnectivityReceiver"
+            android:enabled="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+
+        <activity android:name=".advancebooking.CropsFragmentAdvancebookingActivity" />
+        <activity android:name=".products.Activity_Webview" />
+        <activity
+            android:name=".CropsFragmentSalesorderActivity"
+            android:windowSoftInputMode="adjustNothing" />
+        <activity android:name=".advancebooking.ViewMOTeamBookingsActivity" />
+        <activity android:name=".advancebooking.NewAdvancebokingDivisionsActivity" />
+        <activity
+            android:name=".distributors.DistributorsActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".distributors.Distributor_details"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".feedback.Feedbackall"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".complaints.AllregulatoryActivity"
+            android:label="activity_allregulatory"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".complaints.AllproductsActivity"
+            android:label="activity_allproducts"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".marketintelligence.MainCropShiftActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".marketintelligence.MainPricingSurveyActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".MainProductSurveyActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".marketintelligence.CropShiftAllActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".marketintelligence.PricingSurveyAllActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".marketintelligence.ProductSurveyAllActivity"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".marketintelligencenew.MarketPotentialActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".marketintelligencenew.ProductPricingSurveyActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+
+        <service android:name=".GPSTracker" />
+        <!--
+        <receiver android:name="com.nsl.app.NetworkChangeReceiver">
+            <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            <action android:name="android.net.wifi.WIFI_STATE_CHANGED" />
+        </receiver>
+        -->
+        <activity android:name=".complaints.Complaintsselectactivity" />
+        <activity android:name=".complaints.ComplaintsregallActivity" />
+        <activity android:name=".complaints.ComplaintsprodallActivity" />
+        <activity android:name=".MainRegulatoryActivity" />
+        <activity android:name=".MainProductActivity" />
+
+        <service android:name=".BackgroundPushService" />
+
+        <activity android:name=".dailydairy.HistoryActivity" />
+        <activity
+            android:name=".marketintelligence.MainCommodityPriceActivity"
+            android:label="@string/title_activity_main_commodity_price"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".marketintelligence.CommodityPriceAllActivity" />
+        <activity android:name=".marketintelligence.MarketIntelligenceAcivity" />
+        <activity android:name=".ChangePassword" />
+        <!--
+        <receiver android:name=".network.NetworkReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+            </intent-filter>
+        </receiver>
+        -->
+        <activity
+            android:name=".stockexchange.StockInformation"
+            android:label="@string/title_activity_stock_information"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".stockexchange.Stock_for_Retailer" />
+        <activity android:name=".distributors.DIstributorsListActivity" />
+
+        <receiver android:name=".scheduler.DailySchedulerReceiver" />
+
+        <service android:name=".scheduler.SchedulingService" />
+        <service android:name=".product_catalogue.CatalogueIntentService" />
+        <service android:name=".scheduler.LocationService" />
+        <service android:name=".scheduler.SyncUserDataService" />
+        <service android:name=".oreo.CheckoutService" />
+
+        <activity android:name=".dailydairy.AdhocActivity" />
+        <activity android:name=".dailydairy.AdhocHistoryActivity" />
+        <activity android:name=".dailydairy.CompleteAdhocTaskActivity" />
+        <activity android:name=".fieldestimation.FieldEstimationActivity" />
+        <activity android:name=".dailydairy.DailyDiaryHistoryActivity" />
+        <activity android:name=".fieldestimation.FieldAreaActivity" />
+        <activity android:name=".stockreturns.CropsFragmentStockReturnsActivity" />
+        <activity android:name=".stockreturns.CropsFragmentViewStockReturnsActivity" />
+        <activity android:name=".stockreturns.StockReturnsDistributorsActivity" />
+        <activity android:name=".stockreturns.StockReturnsMainActivity" />
+        <activity android:name=".stockreturns.NewStockReturnsChooseActivity" />
+        <activity android:name=".fieldestimation.Cotton_new" />
+        <activity android:name=".fieldestimation.MaizeActivity" />
+        <activity android:name=".fieldestimation.FieldEstimationMainAcivity" />
+        <activity android:name=".fieldestimation.OtherActivity" />
+        <activity android:name=".advancebooking.ViewABSDetailsActivity" />
+        <activity android:name=".advancebooking.ViewMOTeamBookingsApprovalActivity" />
+        <activity android:name=".advancebooking.ViewBookings2Activity" />
+        <activity android:name=".product_catalogue.ProductCatelogDescriptionActivity" />
+
+        <service android:name=".scheduler.DownloadService" />
+        <service android:name=".product_catalogue.DownloadCropsImg" />
+        <service android:name=".product_catalogue.DownloadCropProductImg" />
+
+        <activity android:name=".product_catalogue.ProductActivity1" />
+        <activity android:name=".product_catalogue.CatalogueCorpPActivity" />
+        <activity android:name=".globalagrigenetics.GlobalAgrigeneticsActivity" />
+        <activity android:name=".product_catalogue.Product_Catlogue" />
+        <!--
+         <receiver android:name=".PostRouteMapActivityCopy$LocationProviderChanged">
+             <intent-filter>
+                 <action android:name="android.location.PROVIDERS_CHANGED" />
+             </intent-filter>
+             <intent-filter>
+                 <category android:name="android.intent.category.DEFAULT" />
+             </intent-filter>
+         </receiver>
+        -->
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="d9850a4997933a660478ff11565ad00202b164de" />
+
+        <service
+            android:name=".oreo.LocationUpdatesService"
+            android:enabled="true"
+            android:exported="true"
+            android:stopWithTask="false" />
+
+        <receiver android:name=".oreo.AlarmReceiver">
+            <intent-filter>
+                <action android:name="com.test.intent.action.ALARM" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".oreo.DeleteOldRecordsAlarmReceiver">
+            <intent-filter>
+                <action android:name="com.deleteold.intent.action.ALARM" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".oreo.CheckoutAlarmReceiver">
+            <intent-filter>
+                <action android:name="com.nsl.intent.action.ALARM" />
+            </intent-filter>
+        </receiver>
+        <!--
+         <service
+             android:exported="false"
+             android:name=".oreo.LocationUpdatesJobService1">
+             <intent-filter>
+                 <action android:name="com.firebase.jobdispatcher.ACTION_EXECUTE"/>
+             </intent-filter>
+         </service>
+         <receiver android:name="com.nsl.beejtantra.oreo.MyWakefulReceiver"></receiver>
+        -->
+        <service
+            android:name=".oreo.JobScheduleService"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <receiver android:name=".scheduler.LocationProviderChanged">
+            <intent-filter>
+                <action android:name="android.location.PROVIDERS_CHANGED" />
+            </intent-filter>
+            <intent-filter>
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </receiver>
+        <receiver
+            android:name=".scheduler.StartMyActivityAtBootReceiver"
+            android:label="StartMyServiceAtBootReceiver">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+
+                <category android:name="android.intent.category.HOME" />
+            </intent-filter>
+        </receiver>
+        <receiver android:name=".oreo.LocationUpdatesService$ActionClick">
+            <intent-filter>
+                <action android:name="com.nsl.beejtantra.pause.location" />
+                <action android:name="com.nsl.beejtantra.resume.location" />
+            </intent-filter>
+        </receiver>
+        <!--
+        <service
+            android:name=".oreo.MyAccessibilityService"
+            android:permission="android.permission.BIND_ACCESSIBILITY_SERVICE"
+            >
+            <intent-filter>
+                <action
+                    android:name="android.accessibilityservice.AccessibilityService" />
+            </intent-filter>
+
+            <meta-data
+                android:name="android.accessibilityservice"
+                android:resource="@xml/accessibilityservice" />
+        </service>
+        -->
+        <activity android:name=".ComplaintNewFormActivity" />
+        <activity android:name=".orderindent.HistoryDetailsActivity" />
+        <activity
+            android:name=".marketintelligencenew.CompetitorChannelActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".marketintelligencenew.CompetitorStrengthActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".marketintelligencenew.ChannelPreferenceActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".marketintelligencenew.CommodityPriceActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity
+            android:name=".marketintelligencenew.CropShiftsActivity"
+            android:theme="@style/AppTheme"
+            android:windowSoftInputMode="adjustResize|stateHidden" />
+        <activity android:name=".marketintelligencenew.MiTypeListActivity" />
+        <activity android:name=".marketintelligencenew.MiTypeDetailsActivity" />
+        <activity android:name=".TargetsActualsActivity" />
+        <activity android:name=".GodownActivity" />
+        <activity android:name=".GodownStockActivity" />
+        <activity android:name=".geotagging.GeoTaggingMapActivity" />
+        <activity android:name=".DistRetailerActivity" />
+        <activity android:name=".SimpleImageActivity" />
+        <activity android:name=".oreo.GeoMeterReadingActivity" />
+        <activity android:name=".GraphActivity" />
+    </application>
+
+</manifest>

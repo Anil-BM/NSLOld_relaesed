@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+   >
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+
+    android:weightSum="1">
+    <com.nsl.beejtantra.commonutils.CustomTextViewBold
+        android:id="@+id/banner_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:padding="@dimen/_10sdp"
+        android:text="@string/Check_in"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/_14sdp"
+        android:layout_weight="1"/>
+    <com.nsl.beejtantra.commonutils.CircleImageView
+        android:id="@+id/image_close"
+        android:layout_width="@dimen/_32sdp"
+        android:layout_height="@dimen/_32sdp"
+        android:layout_gravity="center"
+        android:padding="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:src="@drawable/remove"
+       />
+
+</LinearLayout>
+    <include layout="@layout/line_view"/>
+    <com.whygraphics.multilineradiogroup.MultiLineRadioGroup xmlns:multi_line_radio_group="http://schemas.android.com/apk/res-auto"
+        android:id="@+id/main_activity_multi_line_radio_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        multi_line_radio_group:max_in_row="2" />
+    <LinearLayout
+        android:id="@+id/ll_otherviews"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+            android:visibility="gone"
+            android:id="@+id/tv_comment_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="@dimen/_12sdp"
+            android:text="Employee ID "
+            android:textSize="@dimen/_12sdp" />
+
+        <com.nsl.beejtantra.CustomEditTextNormal
+            android:visibility="gone"
+            android:id="@+id/et_comment"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_32sdp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_25sdp"
+            android:background="@drawable/bg_rect_light"
+            android:gravity="center"
+            android:hint="Comment"
+            android:inputType="text"
+            android:textSize="@dimen/_12sdp" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_marginLeft="@dimen/_12sdp"
+        android:layout_marginRight="@dimen/_20sdp"
+        >
+        <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+            android:id="@+id/tv_previous_reading"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Capture Meter Image"
+            android:textSize="@dimen/_11sdp"
+            android:textColor="@color/divider"/>
+        <com.nsl.beejtantra.CustomEditTextNormal
+            android:id="@+id/et_meter_reading"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_32sdp"
+            android:layout_gravity="center_vertical"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:background="@drawable/bg_rect_light"
+android:paddingLeft="@dimen/_5sdp"
+            android:paddingRight="@dimen/_5sdp"
+            android:hint="Enter meter reading"
+            android:textColorHint="@color/black"
+            android:inputType="numberDecimal"
+            android:maxLines="1"
+            android:singleLine="false"
+            android:textSize="@dimen/_12sdp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_1sdp"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical"
+            android:gravity="center">
+        <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+            android:id="@+id/tv_hint"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:padding="@dimen/_3sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:text="Capture Meter Image"
+            android:textSize="@dimen/_12sdp"
+            />
+        <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+            android:id="@+id/tv_remove_image"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:padding="@dimen/_5sdp"
+            android:text="@string/remove"
+            android:textSize="@dimen/_11sdp"
+            android:textColor="@color/colorPrimary" />
+
+        </LinearLayout>
+        <com.nsl.beejtantra.commonutils.CircleImageView
+            android:id="@+id/image"
+            android:layout_width="@dimen/_70sdp"
+            android:layout_height="@dimen/_70sdp"
+            android:padding="@dimen/_10sdp"
+            android:src="@drawable/camera_ic"
+            android:layout_marginLeft="@dimen/_10sdp"/>
+
+
+
+    </LinearLayout>
+    </LinearLayout>
+
+    <com.nsl.beejtantra.commonutils.CustomTextViewBold
+        android:id="@+id/submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:padding="@dimen/_10sdp"
+        android:text="submit"
+        android:textAllCaps="true"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/_12sdp" />
+
+</LinearLayout>

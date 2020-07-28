@@ -1,0 +1,25 @@
+body, html{
+  background-color: #ffffff;
+  font-family: Roboto;
+}
+table{padding: 10px;}
+table tr td {
+  padding: 10px;
+  font-size:14px;
+  vertical-align: top;
+  border-bottom: 1px dotted #ccc;
+}
+
+h2{
+  font-size: 16px;
+  font-weight: 600;
+  margin: 25px 10px 10px 10px;
+}
+
+ul{
+  padding-left: 35px;
+}
+ul li{
+  padding: 3px 0px;
+  font-size:14px;
+}

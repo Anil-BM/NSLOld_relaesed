@@ -1,0 +1,139 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    >
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:style="@style/MyToolbar"
+        app:title=" "
+        app:titleTextColor="@color/white"><!--here-->
+
+        <com.nsl.beejtantra.commonutils.CustomTextViewBold
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="@string/activityplanner"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16sdp" />
+    </android.support.v7.widget.Toolbar>
+    <com.prolificinteractive.materialcalendarview.MaterialCalendarView
+        android:id="@+id/calendarView"
+        android:layout_width="match_parent"
+        android:layout_height="220dp"
+        android:background="@android:color/white"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:mcv_arrowColor="@color/colorPrimary"
+        app:mcv_headerTextAppearance="@style/Base.TextAppearance.AppCompat.Medium"
+        app:mcv_selectionColor="@color/colorPrimary"
+        app:mcv_showOtherDates="all"
+        app:mcv_tileWidth="match_parent" />
+
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true">
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/_2sdp"
+            android:layout_marginRight="@dimen/_2sdp"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:id="@+id/ll_select"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_36sdp"
+                android:background="@drawable/spinner_border"
+                android:orientation="horizontal">
+
+                <Spinner
+                    android:id="@+id/spin_user"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_36sdp"
+                    android:background="@android:color/transparent"
+                    android:layout_marginLeft="5dp"
+                    android:spinnerMode="dropdown"  />
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:layout_alignRight="@+id/spin_user"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="10dp"
+                    android:src="@drawable/drop" />
+
+            </RelativeLayout>
+
+
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+                android:id="@+id/tv_noresults"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_vertical"
+                android:layout_marginTop="@dimen/_8sdp"
+                android:gravity="center"
+                android:text="@string/No_Schedules_Events"
+                android:textAllCaps="true"
+                android:background="@color/yellow"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_16sdp"
+                android:visibility="visible" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentTop="true"
+                android:layout_marginTop="@dimen/_6sdp"
+                android:divider="@null">
+
+            </android.support.v7.widget.RecyclerView>
+        </LinearLayout>
+
+
+        <android.support.design.widget.CoordinatorLayout
+            android:id="@+id/coordinatorLayout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            >
+
+            <!--here-->
+        </android.support.design.widget.CoordinatorLayout>
+
+
+
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/flaot"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentBottom="true"
+            android:src="@drawable/add"
+            android:layout_marginEnd="11dp"
+            android:layout_marginRight="11dp"
+            android:layout_marginBottom="-1dp" />
+    </RelativeLayout>
+
+</LinearLayout>

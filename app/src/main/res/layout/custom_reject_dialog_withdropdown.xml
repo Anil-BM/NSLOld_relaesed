@@ -1,0 +1,125 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:padding="@dimen/_13sdp">
+
+   <!-- <LinearLayout
+        android:id="@+id/edit_comments"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_36sdp"
+        android:background="@color/editTextbg"
+        android:gravity="center"
+        android:orientation="vertical"
+        >-->
+
+    <RelativeLayout
+        android:id="@+id/edit_comments_ll"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_32sdp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_23sdp"
+        android:background="@drawable/spin_background"
+        android:inputType="textCapWords"
+        android:textSize="@dimen/_12sdp">
+
+        <Spinner
+            android:id="@+id/edit_comments"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_36sdp"
+            android:background="@android:color/transparent"
+            android:layout_marginLeft="5dp"
+            android:spinnerMode="dropdown" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="10dp"
+            android:layout_height="10dp"
+            android:layout_alignRight="@+id/sp_division"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+             />
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.25dp"
+        android:layout_below="@id/edit_comments_ll"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:id="@+id/vieww"
+        android:background="@color/spinner_view_color" />
+
+    <com.nsl.beejtantra.CustomEditTextNormal
+        android:id="@+id/edit_comments2"
+        android:layout_below="@id/vieww"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_125sdp"
+        android:layout_marginTop="@dimen/_13sdp"
+        android:hint="Enter comment here"
+        android:background="@color/editTextbg"
+        android:gravity="start"
+        />
+        <!--<Spinner
+            android:id="@+id/edit_comments"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_32sdp"
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="@dimen/_23sdp"
+            android:background="@drawable/spin_background"
+            android:inputType="textCapWords"
+            android:textSize="@dimen/_12sdp" />-->
+  <!--  </LinearLayout>-->
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/_36sdp"
+        android:layout_below="@+id/edit_comments2"
+        android:gravity="center_horizontal"
+        android:orientation="horizontal">
+
+        <com.nsl.beejtantra.ButtonPlus
+            android:id="@+id/btn_cancel"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:layout_alignLeft="@+id/iv_sucess"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/iv_sucess"
+            android:layout_gravity="center_horizontal"
+            android:background="@drawable/btn_red"
+            android:gravity="center"
+            android:text="@string/cast_tracks_chooser_dialog_cancel"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:layout_marginRight="@dimen/_4sdp"
+            android:textSize="@dimen/_12sdp"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+
+        <com.nsl.beejtantra.ButtonPlus
+            android:id="@+id/btn_ok"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_32sdp"
+            android:layout_alignLeft="@+id/iv_sucess"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/iv_sucess"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginLeft="@dimen/_4sdp"
+            android:background="@drawable/btn_red"
+            android:gravity="center"
+            android:text="@string/ok"
+            android:layout_marginTop="@dimen/_8sdp"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:textSize="@dimen/_12sdp"
+            android:textColor="@color/white"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</RelativeLayout>
+

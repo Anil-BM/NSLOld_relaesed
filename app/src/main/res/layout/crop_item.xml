@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_30sdp"
+    android:layout_marginLeft="@dimen/_8sdp"
+    android:layout_marginRight="@dimen/_8sdp"
+    android:layout_marginTop="@dimen/_3sdp"
+    android:orientation="horizontal">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <CheckBox
+            android:id="@+id/chk_crop"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left"
+            android:layout_weight="1"
+            android:text="@string/nuziveeduseeds_limited"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_11sdp" />
+
+        <com.nsl.beejtantra.CustomEditTextNormal
+            android:id="@+id/et_fieldarea"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right|center_vertical"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:layout_marginRight="@dimen/_8sdp"
+            android:layout_weight="1"
+            android:background="@drawable/bgr"
+            android:gravity="center"
+            android:hint="@string/Field_Area"
+            android:imeOptions="actionDone"
+            android:inputType="numberDecimal"
+            android:singleLine="true"
+            android:textSize="@dimen/_11sdp" />
+
+
+    </LinearLayout>
+</RelativeLayout>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="horizontal"
+    android:padding="@dimen/_3sdp">
+
+
+
+
+    <TextView
+        android:id="@+id/tv_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_marginRight="@dimen/_5sdp"
+        android:gravity="right"
+        android:text="Status"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/_10sdp" />
+
+
+
+    <TextView
+        android:id="@+id/tv_event"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="sbhfjk"
+        android:textAllCaps="true"
+        android:textColor="#343434"
+        android:textSize="@dimen/_13sdp">
+    </TextView>
+
+
+    <TextView
+        android:id="@+id/tv_crop"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_below="@+id/tv_event"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="sbhfjk"
+        android:textColor="#343434"
+        android:textSize="@dimen/_10sdp">
+    </TextView>
+    <TextView
+        android:id="@+id/tv_farmers"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_below="@+id/tv_crop"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="sbhfjk"
+        android:textColor="#343434"
+        android:textSize="@dimen/_10sdp">
+    </TextView>
+
+    <TextView
+        android:id="@+id/tv_address"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_below="@+id/tv_farmers"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="sbhfjk"
+        android:textColor="#343434"
+        android:textSize="@dimen/_10sdp">
+    </TextView>
+    <TextView
+        android:id="@+id/tv_district"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_below="@+id/tv_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="sbhfjk"
+        android:textColor="#343434"
+        android:textSize="@dimen/_10sdp">
+    </TextView>
+        <TextView
+            android:layout_marginTop="@dimen/_4sdp"
+            android:layout_below="@+id/tv_address"
+            android:id="@+id/tv_coupon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:gravity="right"
+            android:textColor="#343434"
+            android:text=""
+
+            android:textSize="@dimen/_10sdp" />
+
+
+
+
+
+
+
+
+
+    <View
+        android:id="@+id/view"
+        android:layout_width="match_parent"
+        android:layout_height="0.1dp"
+        android:layout_marginLeft="@dimen/_13sdp"
+        android:layout_marginRight="@dimen/_3sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:background="@color/rowbottomcolor"
+        android:layout_below="@+id/tv_district"></View>
+
+
+
+
+
+</RelativeLayout>

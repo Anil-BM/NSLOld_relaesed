@@ -1,0 +1,243 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:id="@+id/item_layout"
+    android:padding="@dimen/_3sdp">
+
+
+    <LinearLayout
+        android:id="@+id/ll_horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+
+        <com.nsl.beejtantra.commonutils.CustomTextViewBold
+            android:id="@+id/distributor"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_weight="1.6"
+            android:textColor="@color/black"
+            android:textSize="@dimen/_12sdp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="Division"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+                android:id="@+id/division"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_weight="0.4"
+                android:text="Order No"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+                android:id="@+id/order_number"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_weight="0.8"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="Date"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+                android:id="@+id/order_date"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.5"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_weight="0.4"
+                android:text="@string/District"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+                android:id="@+id/district"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_5sdp"
+                android:layout_marginRight="@dimen/_5sdp"
+                android:layout_weight="0.8"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_5sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:id="@+id/ba_label"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.3"
+                android:text="OA"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+                android:id="@+id/ba"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.7"
+                android:textColor="@color/black"
+                android:text="0"
+                android:textSize="@dimen/_11sdp" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_accept_reject"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:layout_below="@+id/ll_horizontal"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+
+        <ImageView
+            android:id="@+id/tv_reject"
+            android:layout_width="@dimen/_30sdp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/_8sdp"
+            android:background="@drawable/background_orange"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/delete"
+            android:visibility="visible" />
+
+
+        <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+            android:id="@+id/tv_approvalstatus"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_gravity="end"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_weight="1.5"
+            android:background="@drawable/background_green"
+            android:gravity="center"
+            android:text="Status"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_11sdp" />
+
+
+        <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+            android:id="@+id/tv_accept"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_weight="1.5"
+            android:background="@drawable/background_green"
+            android:gravity="center"
+            android:text="APPROVE"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_11sdp" />
+
+        <!--  <com.nsl.beejtantra.ButtonPlus
+              android:layout_width="0dp"
+              android:layout_height="match_parent"
+              android:id="@+id/view_comments"
+              android:text="View"
+              android:layout_marginLeft="@dimen/_8sdp"
+              android:layout_marginRight="@dimen/_8sdp"
+              android:layout_alignParentRight="true"
+              android:layout_gravity="right"
+              android:gravity="center"
+              android:textAlignment="center"
+              android:visibility="gone"
+              android:background="@drawable/background_orange"
+              android:textColor="@color/white"
+              android:focusable="false"
+              android:textAllCaps="true"
+              android:textSize="@dimen/_11sdp"
+              android:focusableInTouchMode="false"
+              android:layout_weight="1"
+              />-->
+        <com.nsl.beejtantra.commonutils.CustomTextViewBold
+            android:id="@+id/history_info"
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_20sdp"
+            android:layout_alignParentRight="true"
+            android:layout_below="@+id/line_layout"
+            android:layout_marginBottom="@dimen/_5sdp"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:background="@drawable/circle_red"
+            android:gravity="center"
+            android:text="i"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_10sdp"
+            android:textStyle="italic" />
+
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0.5dp"
+        android:layout_below="@+id/ll_accept_reject"
+        android:layout_marginLeft="@dimen/_3sdp"
+        android:layout_marginRight="@dimen/_3sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:background="@color/rowbottomcolor"></View>
+</RelativeLayout>

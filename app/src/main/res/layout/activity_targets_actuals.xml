@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.nsl.beejtantra.TargetsActualsActivity">
+
+
+    <android.support.design.widget.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <android.support.v7.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="@color/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay"
+            app:theme="@style/MyToolbar"
+            app:title=""
+            app:titleTextColor="@color/white">
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewBold
+                android:id="@+id/toolbar_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="left"
+                android:text="TARGETS VS ACTUALS"
+                android:textSize="@dimen/_14sdp" />
+
+        </android.support.v7.widget.Toolbar>
+    </android.support.design.widget.AppBarLayout>
+
+    <com.nsl.beejtantra.commonutils.CustomTextViewBold
+        android:id="@+id/month_year"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/light_yellow"
+        android:padding="@dimen/_10sdp"
+        android:text="March 2019"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_12sdp" />
+
+    <LinearLayout
+        android:id="@+id/header_layout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/listview_header_color"
+        android:orientation="horizontal"
+        android:weightSum="4">
+
+
+        <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_31sdp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/product"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_11sdp" />
+
+        <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_31sdp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="TARGETS"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_11sdp" />
+
+
+        <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_31sdp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="ACTUALS"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_11sdp" />
+
+        <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+            android:layout_width="0dp"
+            android:layout_height="@dimen/_31sdp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="SALE %"
+            android:textAllCaps="true"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_11sdp" />
+
+
+    </LinearLayout>
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/targets_recycler"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></android.support.v7.widget.RecyclerView>
+    <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+        android:id="@+id/tv_no_records"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_31sdp"
+        android:background="@color/yellow"
+        android:gravity="center"
+        android:padding="@dimen/_6sdp"
+        android:text="@string/no_records"
+        android:textColor="@color/black"
+        android:textSize="15sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
+
+</LinearLayout>

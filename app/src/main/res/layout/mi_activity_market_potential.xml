@@ -1,0 +1,574 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:fitsSystemWindows="true">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:theme="@style/MyToolbar"
+        app:title=""
+        app:titleTextColor="@color/white">
+
+        <com.nsl.beejtantra.commonutils.CustomTextViewBold
+            android:id="@+id/toolbar_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="@string/market_potential"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16sdp" />
+
+    </android.support.v7.widget.Toolbar>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/toolbar">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="@dimen/_10sdp"
+            android:orientation="vertical">
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_end_time"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="left"
+                android:text="Region"
+                android:textColor="@color/textgraycolor"
+                android:textSize="@dimen/_10sdp" />
+            <Spinner
+                android:id="@+id/spin_region"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/spinner_bg" />
+
+            <include layout="@layout/line_view" />
+
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_end_time"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="left"
+                android:text="@string/District"
+                android:textColor="@color/textgraycolor"
+                android:textSize="@dimen/_10sdp" />
+
+            <AutoCompleteTextView
+                android:id="@+id/et_district"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/bgr"
+                android:focusable="true"
+                android:gravity="center"
+                android:inputType="textCapSentences"
+                android:padding="@dimen/_8sdp"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_end_time"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="left"
+                android:text="@string/Taluka"
+                android:textColor="@color/textgraycolor"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.CustomEditTextNormal
+                android:id="@+id/et_taluka"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/bgr"
+                android:focusable="true"
+                android:gravity="center"
+                android:inputType="textCapSentences"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_end_time"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="left"
+                android:text="@string/Village"
+                android:textColor="@color/textgraycolor"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.CustomEditTextNormal
+                android:id="@+id/et_village"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/bgr"
+                android:focusable="true"
+                android:gravity="center"
+                android:inputType="textCapSentences"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <LinearLayout
+                android:id="@+id/ll_select"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:orientation="vertical">
+
+                <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                    android:id="@+id/text_company"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="@string/select_division"
+                    android:textColor="@color/textgraycolor"
+                    android:textSize="@dimen/_10sdp" />
+
+                <Spinner
+                    android:id="@+id/spin_division"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/spinner_bg"
+                    android:focusable="true" />
+
+                <include layout="@layout/line_view" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ll_select1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:orientation="vertical">
+
+                <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                    android:id="@+id/text_company1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="left"
+                    android:text="@string/select_crop"
+                    android:textColor="@color/textgraycolor"
+                    android:textSize="@dimen/_10sdp" />
+
+                <Spinner
+                    android:id="@+id/spin_crop"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginBottom="@dimen/_2sdp"
+                    android:layout_marginTop="@dimen/_3sdp"
+                    android:background="@drawable/spinner_bg" />
+
+                <include layout="@layout/line_view" />
+            </LinearLayout>
+
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_end_time"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="left"
+                android:text="@string/kharif_crop_acerage_in_village"
+                android:textColor="@color/textgraycolor"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.CustomEditTextNormal
+                android:id="@+id/et_kharifcrop"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/bgr"
+                android:focusable="true"
+                android:gravity="center"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_end_time"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="left"
+                android:text="@string/rabi_crop_acerage_in_village"
+                android:textColor="@color/textgraycolor"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.CustomEditTextNormal
+                android:id="@+id/et_rabicrop"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/bgr"
+                android:focusable="true"
+                android:gravity="center"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="left"
+                android:text="@string/summer_crop_acerage_in_village"
+                android:textColor="@color/textgraycolor"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.CustomEditTextNormal
+                android:id="@+id/et_summercrop"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/bgr"
+                android:focusable="true"
+                android:gravity="center"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="left"
+                android:text="@string/total_potential"
+                android:textColor="@color/textgraycolor"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+                android:id="@+id/tv_total_potential"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/bgr"
+                android:focusable="true"
+                android:gravity="center"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:id="@+id/tv_seed_usage"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="left"
+                android:text="@string/seed_usage_quantity"
+                android:textColor="@color/textgraycolor"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.CustomEditTextNormal
+                android:id="@+id/et_seed_usage"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/bgr"
+                android:focusable="true"
+                android:gravity="center"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:id="@+id/tv_total_market"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="left"
+                android:text="@string/total_markert_potential_volume"
+                android:textColor="@color/textgraycolor"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+                android:id="@+id/tv_total_market_potential_volume"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/bgr"
+                android:focusable="true"
+                android:gravity="center"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:id="@+id/tv_nsl_sale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_end_time"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="left"
+                android:text="@string/nsl_sale"
+                android:textColor="@color/textgraycolor"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.CustomEditTextNormal
+                android:id="@+id/et_nsl_sale"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/bgr"
+                android:focusable="true"
+                android:gravity="center"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_end_time"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="left"
+                android:text="@string/top_company1_name"
+                android:textColor="@color/textgraycolor"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.CustomEditTextNormal
+                android:id="@+id/et_top_company1_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/bgr"
+                android:focusable="true"
+                android:gravity="center"
+                android:inputType="textCapSentences"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:id="@+id/tv_company1_qty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_end_time"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="left"
+                android:text="@string/company1_qty"
+                android:textColor="@color/textgraycolor"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.CustomEditTextNormal
+                android:id="@+id/et_company1_qty"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/bgr"
+                android:focusable="true"
+                android:gravity="center"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_end_time"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="left"
+                android:text="@string/top_company2_name"
+                android:textColor="@color/textgraycolor"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.CustomEditTextNormal
+                android:id="@+id/et_top_company2_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/bgr"
+                android:focusable="true"
+                android:gravity="center"
+                android:inputType="textCapSentences"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:id="@+id/tv_company2_qty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_end_time"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="left"
+                android:text="@string/company2_qty"
+                android:textColor="@color/textgraycolor"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.CustomEditTextNormal
+                android:id="@+id/et_company2_qty"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/bgr"
+                android:focusable="true"
+                android:gravity="center"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_end_time"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="left"
+                android:text="@string/top_company3_name"
+                android:textColor="@color/textgraycolor"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.CustomEditTextNormal
+                android:id="@+id/et_top_company3_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/bgr"
+                android:focusable="true"
+                android:gravity="center"
+                android:inputType="textCapSentences"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:id="@+id/tv_company3_qty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_end_time"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="left"
+                android:text="@string/company3_qty"
+                android:textColor="@color/textgraycolor"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.CustomEditTextNormal
+                android:id="@+id/et_company3_qty"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/bgr"
+                android:focusable="true"
+                android:gravity="center"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_end_time"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="left"
+                android:text="@string/top_company4_name"
+                android:textColor="@color/textgraycolor"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.CustomEditTextNormal
+                android:id="@+id/et_top_company4_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/bgr"
+                android:focusable="true"
+                android:gravity="center"
+                android:inputType="textCapSentences"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:id="@+id/tv_company4_qty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_end_time"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="left"
+                android:text="@string/company4_qty"
+                android:textColor="@color/textgraycolor"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.CustomEditTextNormal
+                android:id="@+id/et_company4_qty"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/bgr"
+                android:focusable="true"
+                android:gravity="center"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_end_time"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:gravity="left"
+                android:text="@string/top_company5_name"
+                android:textColor="@color/textgraycolor"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.CustomEditTextNormal
+                android:id="@+id/et_top_company5_name"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/bgr"
+                android:focusable="true"
+                android:gravity="center"
+                android:inputType="textCapSentences"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewLight
+                android:id="@+id/tv_company5_qty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/et_end_time"
+                android:layout_marginTop="@dimen/_15sdp"
+                android:gravity="left"
+                android:text="@string/company5_qty"
+                android:textColor="@color/textgraycolor"
+                android:textSize="@dimen/_10sdp" />
+
+            <com.nsl.beejtantra.CustomEditTextNormal
+                android:id="@+id/et_company5_qty"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_35sdp"
+                android:layout_marginTop="@dimen/_3sdp"
+                android:background="@drawable/bgr"
+                android:focusable="true"
+                android:gravity="center"
+                android:inputType="number"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_11sdp" />
+
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewBold
+                android:id="@+id/save_market_potential"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/_20sdp"
+                android:background="@drawable/background_green"
+                android:gravity="center"
+                android:padding="@dimen/_5sdp"
+                android:text="@string/save"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_12sdp" />
+
+
+        </LinearLayout>
+    </ScrollView>
+
+</RelativeLayout>

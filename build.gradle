@@ -1,0 +1,91 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+apply from: rootProject.file('versions-plugin.gradle')
+apply plugin: "se.bjurr.violations.violation-comments-to-github-gradle-plugin"
+
+buildscript {
+    repositories {
+        google()
+        jcenter()
+        apply from: 'dependencies.gradle'
+        addRepos(repositories)
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.6.1'
+        classpath 'com.google.gms:google-services:3.1.1'
+       // classpath 'com.neenbedankt.gradle.plugins:android-apt:1.8'
+        classpath 'com.github.dcendents:android-maven-gradle-plugin:1.4.1'
+        // NOTE: Do not place your application dependencies here; they belong
+        // in the individual module build.gradle files
+       /* classpath('com.github.wangjiegulu:rapidmetainf:1.0.0') {
+            exclude group: 'com.android.tools.build', module: 'gradle'
+        }
+        classpath('com.github.wangjiegulu:rapidmavenpush:0.0.4') {
+            exclude group: 'com.android.tools.build', module: 'gradle'
+        }*/
+
+        classpath deps.android_gradle_plugin
+        classpath deps.android_checkstyle_plugin
+        classpath deps.android_maven_gradle_plugin
+        classpath deps.gradle_bintray_plugin
+        classpath deps.gradle_versions_plugin
+        classpath deps.violations_plugin
+        classpath deps.errorprone_plugin
+    }
+}
+
+allprojects {
+
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        }
+    }
+    repositories {
+        addRepos(repositories)
+        google()
+        jcenter()
+        maven { url "https://jitpack.io" }
+    }
+    ext {
+        androidApplicationId = 'com.marcohc.robotocalendar'
+        androidBuildToolsVersion = "26.0.2"
+        androidMinSdkVersion = 14
+        androidTargetSdkVersion = 26
+        androidCompileSdkVersion = 26
+        androidVersionCode = 1
+        androidVersionName = "3.1.1"
+    }
+
+
+}
+
+subprojects {
+    project.configurations.all {
+        resolutionStrategy.eachDependency { details ->
+            if (details.requested.group == 'com.android.support'
+                    && !details.requested.name.contains('multidex')
+                    && !gradle.startParameter.taskNames.contains('dependencyUpdates')) {
+                details.useVersion versions.support
+            }
+        }
+    }
+}
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
+task violationCommentsToGitHub(type: se.bjurr.violations.comments.github.plugin.gradle.ViolationCommentsToGitHubTask) {
+    repositoryOwner = "leinardi"
+    repositoryName = "FloatingActionButtonSpeedDial"
+    pullRequestId = System.properties['GITHUB_PULLREQUESTID']
+    oAuth2Token = System.properties['GITHUB_OAUTH2TOKEN']
+    gitHubUrl = "https://api.github.com/"
+    createCommentWithAllSingleFileComments = false
+    createSingleFileComments = true
+    commentOnlyChangedContent = true
+    violations = [
+            ["FINDBUGS", ".", ".*/reports/findbugs/.*\\.xml\$", "Findbugs"],
+            ["CHECKSTYLE", ".", ".*/reports/checkstyle/.*debug\\.xml\$", "Checkstyle"],
+            ["ANDROIDLINT", ".", ".*/reports/lint-results.*\\.xml\$", "Android Lint"],
+            ["GOOGLEERRORPRONE", ".", ".*/build.log\$", "Error Prone"]
+    ]
+}

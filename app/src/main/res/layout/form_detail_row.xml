@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="@dimen/_5sdp"
+    android:weightSum="2">
+
+    <com.nsl.beejtantra.commonutils.CustomTextViewLight
+        android:id="@+id/label"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Label"
+        android:textSize="@dimen/_12sdp" />
+
+    <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+        android:id="@+id/value"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_weight="1"
+        android:gravity="right"
+        android:text="Value"
+        android:textSize="@dimen/_13sdp" />
+
+</LinearLayout>

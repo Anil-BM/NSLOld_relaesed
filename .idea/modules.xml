@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MPChartLib/MPChartLib.iml" filepath="$PROJECT_DIR$/.idea/modules/MPChartLib/MPChartLib.iml" group="NSLOld_relaesed/MPChartLib" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/MapmyIndiaGLAndroidSDK_v6.7.3/MapmyIndiaGLAndroidSDK_v6.7.3.iml" filepath="$PROJECT_DIR$/.idea/modules/MapmyIndiaGLAndroidSDK_v6.7.3/MapmyIndiaGLAndroidSDK_v6.7.3.iml" group="NSLOld_relaesed/MapmyIndiaGLAndroidSDK_v6.7.3" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/NSLOld_relaesed.iml" filepath="$PROJECT_DIR$/.idea/modules/NSLOld_relaesed.iml" group="NSLOld_relaesed" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/app/app.iml" filepath="$PROJECT_DIR$/.idea/modules/app/app.iml" group="NSLOld_relaesed/app" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/flotingbuttonlibrary/flotingbuttonlibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/flotingbuttonlibrary/flotingbuttonlibrary.iml" group="NSLOld_relaesed/flotingbuttonlibrary" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/imageloader/imageloader.iml" filepath="$PROJECT_DIR$/.idea/modules/imageloader/imageloader.iml" group="NSLOld_relaesed/imageloader" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/monthyearpicker/monthyearpicker.iml" filepath="$PROJECT_DIR$/.idea/modules/monthyearpicker/monthyearpicker.iml" group="NSLOld_relaesed/monthyearpicker" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/robotolibrary/robotolibrary.iml" filepath="$PROJECT_DIR$/.idea/modules/robotolibrary/robotolibrary.iml" group="NSLOld_relaesed/robotolibrary" />
+    </modules>
+  </component>
+</project>
