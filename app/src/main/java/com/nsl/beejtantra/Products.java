@@ -4,8 +4,8 @@ public class Products {
 
     //private variables
     int    _product_id;
-    String _product_masterid;
-    String _product_name;
+    public String _product_masterid;
+    public static String _product_name;
     String _product_description;
     String _product_sap_code;
     String _product_crop_id;

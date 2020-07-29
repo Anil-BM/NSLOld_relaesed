@@ -218,17 +218,13 @@ public class ActivityIndent extends NetworkChangeListenerActivity  {
                 seluserId = organisations.get(position).getCityId();
                 if(position>0)
                 {
-                    if(position==1)
-                    {
-                        seluserId=userId;
-                    }
-                    new Async_getalldates().execute();
+                    GetalldayesAndCurrentDateActivity();
                     // new ActivityIndent.Async_getalltfalistactivities();
                 }
                 else
                 {
 
-                    new Async_getalldates().execute();
+                    GetalldayesAndCurrentDateActivity();
                 }
 
 
@@ -262,64 +258,7 @@ public class ActivityIndent extends NetworkChangeListenerActivity  {
             else
             {
                 seluserId = userId;
-                 t1=new Thread(()->
-                {
-                    try {
-                        String selectQuery = "SELECT DISTINCT"+ " activity_date " +"FROM " +  TABLE_TFA_ACTIVITYLIST + "  where "+  "(approval_status<='4' or  approval_status<='9') and " + KEY_USER_ID + " = " + seluserId+"  "+" order by  activity_date asc";
-
-                        sdbw = db.getWritableDatabase();
-                        Log.e("no plans", selectQuery);
-                        list_dates.clear();
-                        Cursor cursor = sdbw.rawQuery(selectQuery, null);
-                        if (cursor.moveToFirst())
-                        {
-                            do {
-                                list_dates.add(cursor.getString(0));
-
-                            } while (cursor.moveToNext());
-                        }
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                });
-                t2=new Thread(()->
-                {
-                    try {
-                        t1.join();
-                    } catch (InterruptedException e) {   //join will throw interrupted exception
-                        e.printStackTrace();
-                    }
-                    new Async_getalltfalistactivities().execute();
-                });
-                //main thread
-                t1.start();
-                t2.start();
-                try {
-                    t2.join();
-                } catch (InterruptedException e) {   //join will throw interrupted exception
-                    e.printStackTrace();
-                }
-                for(int i22=0;i22<list_dates.size();i22++)
-                {
-                    SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
-                    Date date33 = null;
-                    try
-                    {
-                        date33 = simpleDateFormat.parse(list_dates.get(i22));
-                        CalendarDay day = CalendarDay.from(date33);
-                        list.add(day);
-                        Collection<CalendarDay> c = list;
-                        EventDecorator ed = new EventDecorator(R.color.colorPrimary, c);
-                        materialCalendarView.removeDecorator(ed);
-                        materialCalendarView.addDecorator(ed);
-
-
-                    } catch (ParseException e)
-                    {
-                        e.printStackTrace();
-                    }
-                }
-
+                GetalldayesAndCurrentDateActivity();
 
 
             }
@@ -654,13 +593,17 @@ public class ActivityIndent extends NetworkChangeListenerActivity  {
             if (cursor != null && cursor.moveToFirst()) {
                 do {
                     SelectedCities cities2 = new SelectedCities();
-                    cities2.setCityId(cursor.getString(1));
-                    cities2.setCityName(cursor.getString(0));
-                    organisations.add(cities2);
-                    if (String.valueOf(cities2.getCityId()).equalsIgnoreCase(Common.getUserIdFromSP(this)))
-                        adaptercity.add("SELF");
+
+                    if (String.valueOf(cursor.getString(1)).equalsIgnoreCase(Common.getUserIdFromSP(this))) {
+                       // adaptercity.add("SELF");
+                    }
                     else
+                    {
                         adaptercity.add(cursor.getString(0));
+                        cities2.setCityId(cursor.getString(1));
+                        cities2.setCityName(cursor.getString(0));
+                        organisations.add(cities2);
+                    }
 
                 } while (cursor.moveToNext());
             } else {
@@ -777,7 +720,7 @@ public class ActivityIndent extends NetworkChangeListenerActivity  {
                         map.put("user_id",cursor.getString(13));
                         map.put("created_user_id",cursor.getString(14));
                         map.put("approval_status",cursor.getString(15));
-                        map.put("crop_name",cursor.getString(18));
+                        map.put("crop_name",cursor.getString(19));
                         favouriteItem.clear();
                         favouriteItem.add(map);
 
@@ -1140,4 +1083,68 @@ public class ActivityIndent extends NetworkChangeListenerActivity  {
             e.printStackTrace();
         }
     }
+    private void GetalldayesAndCurrentDateActivity() {
+        t1=new Thread(()->
+        {
+            try {
+                String selectQuery = "SELECT DISTINCT"+ " activity_date " +"FROM " +  TABLE_TFA_ACTIVITYLIST + "  where "+  "(approval_status<='4' or  approval_status<='9') and " + KEY_USER_ID + " = " + seluserId+"  "+" order by  activity_date asc";
+
+                sdbw = db.getWritableDatabase();
+                Log.e("no plans", selectQuery);
+                list_dates.clear();
+               // materialCalendarView.removeDecorators();
+                Cursor cursor = sdbw.rawQuery(selectQuery, null);
+                if (cursor.moveToFirst())
+                {
+                    do {
+                        list_dates.add(cursor.getString(0));
+
+                    } while (cursor.moveToNext());
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        });
+        t2=new Thread(()->
+        {
+            try {
+                t1.join();
+            } catch (InterruptedException e) {   //join will throw interrupted exception
+                e.printStackTrace();
+            }
+            new Async_getalltfalistactivities().execute();
+        });
+        //main thread
+        materialCalendarView.removeDecorators();
+        t1.start();
+        t2.start();
+        try {
+            t2.join();
+        } catch (InterruptedException e) {   //join will throw interrupted exception
+            e.printStackTrace();
+        }
+        //main thread
+        for(int i22=0;i22<list_dates.size();i22++)
+        {
+            SimpleDateFormat simpleDateFormat = new SimpleDateFormat("yyyy-MM-dd", Locale.getDefault());
+            Date date33 = null;
+            try
+            {
+                date33 = simpleDateFormat.parse(list_dates.get(i22));
+                CalendarDay day = CalendarDay.from(date33);
+                list.add(day);
+                Collection<CalendarDay> c = list;
+                EventDecorator ed = new EventDecorator(R.color.colorPrimary, c);
+                materialCalendarView.removeDecorator(ed);
+                materialCalendarView.addDecorator(ed);
+
+
+            } catch (ParseException e)
+            {
+                e.printStackTrace();
+            }
+        }
+
+    }
+
 }

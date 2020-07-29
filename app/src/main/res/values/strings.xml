@@ -555,4 +555,5 @@
     <string name="activityplanner">Activity Planner</string>
     <string name="activityplannerdet">Activity Planner Details</string>
     <string name="s_village_name">Village Name</string>
+    <string name="actdtls">Activity Details</string>
 </resources>

@@ -1,35 +1,33 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical">
-
-
+    android:orientation="vertical"
+    android:layout_height="match_parent">
 
     <!--<include
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         layout="@layout/yourlayout" />-->
+
     <android.support.v7.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="?attr/colorPrimary"
-        app:title=" "
-        app:popupTheme="@style/AppTheme.PopupOverlay">
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:title=" ">
 
 
         <com.nsl.beejtantra.commonutils.CustomTextViewBold
             android:id="@+id/toolbar_title"
-            android:layout_width="match_parent"
+            android:layout_width="@dimen/_110sdp"
             android:layout_height="wrap_content"
             android:gravity="left"
-            android:text="Demand generation"
+            android:text="@string/actdtls"
             android:textColor="#ffffff"
-            android:textSize="@dimen/_16sdp"
-            />
+            android:textSize="@dimen/_16sdp" />
 
         <com.nsl.beejtantra.ButtonPlus
             android:id="@+id/refresh"
@@ -38,12 +36,13 @@
             android:layout_marginLeft="@dimen/_35sdp"
             android:background="@drawable/refresh"
             android:textColor="@color/white"
-            android:visibility="gone"/>
+            android:visibility="gone" />
     </android.support.v7.widget.Toolbar>
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -53,29 +52,27 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
                 android:gravity="center"
-                android:orientation="vertical"
-                >
+                android:orientation="vertical">
 
                 <TextView
+                    android:id="@+id/view_msgs"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textStyle="bold"
+                    android:text="View sheduled messages"
                     android:textColor="#303F9F"
-                    android:id="@+id/view_msgs"
-                    android:visibility="gone"
                     android:textSize="@dimen/_8sdp"
-                    android:text="View sheduled messages"/>
+                    android:textStyle="bold"
+                    android:visibility="gone" />
             </LinearLayout>
-
 
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:gravity="center"
                 android:layout_marginLeft="@dimen/_20sdp"
-                android:layout_marginRight="@dimen/_20sdp"
                 android:layout_marginTop="@dimen/_20sdp"
+                android:layout_marginRight="@dimen/_20sdp"
+                android:gravity="center"
                 android:orientation="vertical">
                 <!-- <Spinner
                      android:id="@+id/sp_division"
@@ -85,12 +82,13 @@
 
                      android:spinnerMode="dropdown"/>-->
                 <RelativeLayout
-                    android:layout_marginTop="@dimen/_10sdp"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_36sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:layout_weight=".28"
                     android:background="@drawable/spinner_border"
                     android:orientation="horizontal">
+
                     <AutoCompleteTextView
                         android:id="@+id/et_district"
                         android:layout_width="match_parent"
@@ -129,19 +127,20 @@
                 </RelativeLayout>
 
                 <RelativeLayout
-                    android:layout_marginTop="@dimen/_20sdp"
                     android:layout_width="match_parent"
-                    android:gravity="center"
                     android:layout_height="@dimen/_36sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
                     android:background="@drawable/spinner_border"
+                    android:gravity="center"
                     android:orientation="horizontal">
 
                     <Spinner
+                        android:layout_marginTop="@dimen/_4sdp"
                         android:id="@+id/sp_division"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_36sdp"
-                        android:background="@android:color/transparent"
                         android:layout_marginLeft="5dp"
+                        android:background="@android:color/transparent"
                         android:spinnerMode="dropdown" />
 
                     <ImageView
@@ -155,6 +154,9 @@
 
                 </RelativeLayout>
 
+
+
+
                 <!--<ImageView
                     android:id="@+id/imageView5"
                     android:layout_width="10dp"
@@ -167,25 +169,24 @@
         </LinearLayout>-->
 
 
-
-
                 <RelativeLayout
-                    android:layout_marginTop="@dimen/_20sdp"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_36sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
                     android:layout_weight=".28"
                     android:background="@drawable/spinner_border"
                     android:orientation="horizontal">
 
                     <Spinner
                         android:id="@+id/sp_crop"
+                        android:layout_marginTop="@dimen/_6sdp"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_36sdp"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
                         android:background="@android:color/transparent"
                         android:gravity="center"
-                        android:layout_marginLeft="5dp"
                         android:spinnerMode="dropdown" />
 
                     <ImageView
@@ -208,25 +209,69 @@
                     android:src="@drawable/downarrow" />
             </RelativeLayout>
         </LinearLayout>-->
-
-
                 <RelativeLayout
-                    android:layout_marginTop="@dimen/_20sdp"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_36sdp"
+                    android:layout_marginTop="@dimen/_30sdp"
+                    android:layout_weight=".28"
+                    android:background="@drawable/spinner_border"
+                    android:orientation="horizontal">
+
+                    <AutoCompleteTextView
+                        android:id="@+id/et_product"
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_35sdp"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:background="@android:color/transparent"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:hint="Search Product"
+                        android:inputType="textCapSentences"
+                        android:padding="@dimen/_8sdp"
+                        android:textColor="@color/black"
+                        android:textColorHint="@color/black"
+                        android:textSize="@dimen/_12sdp" />
+                    <!--   <Spinner
+                           android:entries="@array/spec"
+                           android:id="@+id/sp_district"
+                           android:layout_width="match_parent"
+                           android:layout_height="@dimen/_36sdp"
+                           android:layout_centerVertical="true"
+                           android:layout_gravity="center"
+                           android:background="@android:color/transparent"
+                           android:gravity="center"
+                           android:layout_marginLeft="5dp"
+                           android:spinnerMode="dropdown" />-->
+
+                    <!-- <ImageView
+
+                         android:layout_width="10dp"
+                         android:layout_height="10dp"
+                         android:layout_alignRight="@+id/sp_district"
+                         android:layout_centerVertical="true"
+                         android:layout_marginRight="10dp"
+                         android:src="@drawable/drop" />-->
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_36sdp"
+                    android:layout_marginTop="@dimen/_20sdp"
                     android:layout_weight=".28"
                     android:background="@drawable/spinner_border"
                     android:orientation="horizontal">
 
                     <Spinner
                         android:id="@+id/sp_activity"
+                        android:layout_marginTop="@dimen/_6sdp"
                         android:layout_width="match_parent"
                         android:layout_height="@dimen/_36sdp"
                         android:layout_centerVertical="true"
                         android:layout_gravity="center"
+                        android:layout_marginLeft="5dp"
                         android:background="@android:color/transparent"
                         android:gravity="center"
-                        android:layout_marginLeft="5dp"
                         android:spinnerMode="dropdown" />
 
                     <ImageView
@@ -243,82 +288,181 @@
 
                 <EditText
 
-                    android:gravity="center"
                     android:id="@+id/et_date"
-                    android:textColor="@color/black"
-                    android:focusable="false"
-                    android:background="#00000000"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_36sdp"
                     android:layout_marginTop="@dimen/_6sdp"
-                    android:textColorHint="#123456"
-                    android:textSize="@dimen/_12sdp"
+                    android:background="#00000000"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:hint="Planned Date"
                     android:inputType="textMultiLine"
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_36sdp"
-                    android:hint="Planned Date"/>
+                    android:textColor="@color/black"
+                    android:textColorHint="#123456"
+                    android:textSize="@dimen/_12sdp" />
+
                 <include layout="@layout/line_view" />
 
 
+                <EditText
+                    android:id="@+id/et_taluka"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_36sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="#00000000"
+                    android:gravity="center"
+                    android:hint="Taluka"
+                    android:inputType="textMultiLine"
+                    android:textColor="#050505"
+                    android:textColorHint="#123456"
+                    android:textSize="@dimen/_12sdp" />
 
-
-
-
-
-
+                <include layout="@layout/line_view" />
 
 
                 <EditText
-                    android:gravity="center"
                     android:id="@+id/et_village"
-                    android:textColor="@color/black"
-                    android:background="#00000000"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:textColorHint="#123456"
-                    android:textSize="@dimen/_12sdp"
-                    android:inputType="textMultiLine"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_36sdp"
-                    android:hint="Address"/>
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="#00000000"
+                    android:gravity="center"
+                    android:hint="Village"
+                    android:inputType="textMultiLine"
+                    android:textColor="@color/black"
+                    android:textColorHint="#123456"
+                    android:textSize="@dimen/_12sdp" />
+
                 <include layout="@layout/line_view" />
 
+                <EditText
+                    android:id="@+id/et_listofvillages"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_35sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="#00000000"
+                    android:focusable="false"
+                    android:gravity="center"
+                    android:hint="List Of Villages"
+                    android:inputType="textCapSentences"
+                    android:textColor="@color/black"
+                    android:textColorHint="#123456"
+                    android:textSize="@dimen/_12sdp"></EditText>
+
+                <include layout="@layout/line_view" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/_36sdp"
+                    android:layout_marginTop="@dimen/_8sdp"
+
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_36sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:weightSum="2">
+
+                        <EditText
+                            android:id="@+id/et_nooffarmers"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_36sdp"
+                            android:layout_weight="1"
+                            android:background="#00000000"
+                            android:hint="No Of Farmers"
+                            android:inputType="numberDecimal"
+                            android:textColor="@color/black"
+                            android:textColorHint="#123456"
+                            android:textSize="@dimen/_12sdp">
+
+                        </EditText>
+
+                        <include
+                            layout="@layout/line_view"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="@dimen/_36sdp"
+                        android:layout_marginLeft="@dimen/_25sdp"
+                        android:layout_marginTop="@dimen/_8sdp"
+                        android:layout_weight="1"
+                        android:orientation="vertical"
+                        android:weightSum="2">
+
+                        <EditText
+                            android:id="@+id/et_estimationperhead"
+                            android:layout_width="match_parent"
+                            android:layout_height="@dimen/_36sdp"
+                            android:layout_weight="1"
+                            android:background="#00000000"
+                            android:hint="Estimation/Head"
+                            android:inputType="numberDecimal"
+                            android:textColor="@color/black"
+                            android:textColorHint="#123456"
+                            android:textSize="@dimen/_12sdp"></EditText>
+
+                        <include
+                            layout="@layout/line_view"
+                            android:layout_weight="1" />
+                    </LinearLayout>
+
+                </LinearLayout>
 
 
                 <EditText
-                    android:gravity="center"
-                    android:id="@+id/et_noofformaers"
-                    android:textColor="@color/black"
-                    android:background="#00000000"
-                    android:layout_marginTop="@dimen/_8sdp"
-                    android:textColorHint="#123456"
-                    android:textSize="@dimen/_12sdp"
-                    android:inputType="number"
+                    android:id="@+id/et_totalexpences"
                     android:layout_width="match_parent"
                     android:layout_height="@dimen/_36sdp"
-                    android:hint="No of farmers"/>
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="#00000000"
+                    android:gravity="center"
+                    android:focusable="false"
+                    android:focusableInTouchMode="false"
+                    android:hint="Total Expences"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/black"
+                    android:textColorHint="#123456"
+                    android:textSize="@dimen/_12sdp"></EditText>
+
                 <include layout="@layout/line_view" />
 
-
-                <CheckBox
-                    android:id="@+id/ch_terms"
-                    android:layout_marginTop="@dimen/_18sdp"
+                <EditText
+                    android:id="@+id/et_adv"
                     android:layout_width="match_parent"
-                    android:textColor="@color/blue"
                     android:layout_height="@dimen/_36sdp"
-                    android:text="I certify that the above information is correct and verified by me."/>
+                    android:layout_marginTop="@dimen/_8sdp"
+                    android:background="#00000000"
+                    android:gravity="center"
+                    android:hint="Advance Required"
+                    android:inputType="numberDecimal"
+                    android:textColor="@color/black"
+                    android:textColorHint="#123456"
+                    android:textSize="@dimen/_12sdp"></EditText>
+
+                <include layout="@layout/line_view" />
 
 
                 <Button
                     android:id="@+id/btn_appt"
-                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_width="match_parent"
                     android:layout_height="@dimen/_36sdp"
                     android:layout_marginLeft="50dp"
-                    android:gravity="center"
-                    android:textSize="@dimen/_12sdp"
-                    android:textStyle="bold"
-                    android:text="Submit"
-                    android:textColor="#ffffff"
+                    android:layout_marginTop="@dimen/_10sdp"
                     android:layout_marginRight="50dp"
-                    android:layout_width="match_parent"
-                    android:background="@color/colorPrimary"/>
+                    android:background="@color/colorPrimary"
+                    android:gravity="center"
+                    android:text="Submit"
+                    android:onClick="submitact"
+                    android:textColor="#ffffff"
+                    android:textSize="@dimen/_12sdp"
+                    android:textStyle="bold" />
             </LinearLayout>
 
         </LinearLayout>

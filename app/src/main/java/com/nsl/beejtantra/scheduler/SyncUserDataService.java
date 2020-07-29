@@ -19,9 +19,12 @@ import com.nsl.beejtantra.Customers;
 import com.nsl.beejtantra.DatabaseHandler;
 import com.nsl.beejtantra.LoginActivity;
 import com.nsl.beejtantra.MainActivity;
+import com.nsl.beejtantra.MyApplication;
 import com.nsl.beejtantra.Products_Pojo;
 import com.nsl.beejtantra.Scheme_Products;
 import com.nsl.beejtantra.Schemes;
+import com.nsl.beejtantra.TFA.res.res_tfa_activities_masterd;
+import com.nsl.beejtantra.TFA.support.tfaactivitylist;
 import com.nsl.beejtantra.User_Company_Customer;
 import com.nsl.beejtantra.User_Company_Division;
 import com.nsl.beejtantra.Users;
@@ -38,6 +41,10 @@ import org.json.JSONObject;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
+
+import retrofit2.Call;
+import retrofit2.Callback;
 
 import static com.nsl.beejtantra.MainActivity.DATABASE_NAME;
 
@@ -86,7 +93,7 @@ public class SyncUserDataService extends Service {
         Log.v(TAG, "onStart");
         if (Common.haveInternet(getApplicationContext())) {  // connected to the internet
 
-            new Async_getallucd().execute();
+            gettfaactivitylist();
 
             new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
                 @Override
@@ -94,7 +101,7 @@ public class SyncUserDataService extends Service {
                     if (LocationService.isMyServiceRunning(CatalogueIntentService.class,getApplicationContext()))
 
                       try{ stopService(new Intent(getApplicationContext(), CatalogueIntentService.class));
-                       startService(new Intent(getApplicationContext(), CatalogueIntentService.class));
+                          startService(new Intent(getApplicationContext(), CatalogueIntentService.class));
                       }catch (Exception e){
                           e.printStackTrace();
                       }     }
@@ -585,7 +592,51 @@ public class SyncUserDataService extends Service {
         }
     }
 
+    private void gettfaactivitylist() {
 
+        MyApplication.getInstance().getRetrofitAPI().gettfaactivitylist("tfa_activity_master").enqueue(new Callback<res_tfa_activities_masterd>() {
+            @Override
+            public void onResponse(Call<res_tfa_activities_masterd> call, retrofit2.Response<res_tfa_activities_masterd> response) {
+                try {
+
+                    res_tfa_activities_masterd results = response.body();
+                    List<res_tfa_activities_masterd.MasterDatum> datalist = results.getMasterData();
+                    db.deleteDataByTableName(db.TABLE_TFA_ACTIVITY_MASTER);
+                    for (res_tfa_activities_masterd.MasterDatum list : datalist) {
+                        tfaactivitylist sto_add =
+                                new tfaactivitylist(list.tfaMasterId, list.tfaTitle, list.status, list.createdDatetime,
+                                        list.updatedDatetime);
+
+                        String status = db.addtfaactivitylistmaster(sto_add);
+                        if (!status.equals("0")) {
+                            Log.d("tfaactivitylist_master", "insertedservertolocal");
+                        } else if (status.equals("0")) {
+                            Log.d("tfaactivitylist_master", "EXITS");
+                        } else {
+                            Log.d("tfaactivitylist_master", "failedfromservertolocaldemand");
+                        }
+
+                    }
+                    new Async_getallucd().execute();
+
+
+                } catch (Exception e) {
+                    Log.d("hiz", e.getMessage());
+                    new Async_getallucd().execute();
+
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<res_tfa_activities_masterd> call, Throwable t) {
+                new Async_getallucd().execute();
+
+            }
+
+
+        });
+    }
     private class Async_getallucd extends AsyncTask<Void, Void, String> {
 
         private String jsonData;

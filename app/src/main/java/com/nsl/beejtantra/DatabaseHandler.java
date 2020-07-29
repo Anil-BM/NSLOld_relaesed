@@ -73,6 +73,7 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.RequestBody;
 import com.squareup.okhttp.Response;
 
+import org.json.JSONArray;
 import org.json.JSONObject;
 
 import java.io.File;
@@ -81,6 +82,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Locale;
@@ -11297,5 +11299,223 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
         return s;
         // Closing database connection
+    }
+    public HashMap<ArrayList,ArrayList> getactvitiestfa() {
+        ArrayList<String> arraytitle = new ArrayList<String>();
+        ArrayList<String> arrayid = new ArrayList<String>();
+        HashMap<ArrayList,ArrayList> HashMap=new HashMap<ArrayList, ArrayList>();
+        String selectQuery = "SELECT "+KEY_tfa_title +" , "+KEY_tfa_master_id+" FROM " + TABLE_TFA_ACTIVITY_MASTER ;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+        if (cursor.moveToFirst()) {
+            do {
+                arraytitle.add(cursor.getString(0));
+                arrayid.add(cursor.getString(1));
+
+            } while (cursor.moveToNext());
+        }
+        HashMap.put(arraytitle,arrayid);
+        db.close();
+        return  HashMap;
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    public List<Products> getProductByDevisionIdandCropId(String key, String division_id,String sel_cropid) {
+        List<Products> productsList = new ArrayList<>();
+        District district = null;
+        // String selectQuery = "SELECT "+ KEY_PRODUCT_MASTER_ID + "," + KEY_PRODUCT_BRAND_NAME +  " FROM " + TABLE_PRODUCTS  ;
+        String selectQuery = "SELECT  " + KEY_PRODUCT_MASTER_ID + "," + KEY_PRODUCT_BRAND_NAME + "," + KEY_PRODUCTS_PACKETS_COUNT + "," + KEY_PRODUCT_DISCOUNT + "," + KEY_PRODUCTS_CATALOG_URL + " FROM " + TABLE_PRODUCTS + "  where " + KEY_PRODUCTS_DIVISION_ID + " = " + division_id + " and " + KEY_PRODUCT_CROP_ID + " = " + sel_cropid + " and status=1";
+        // String selectQuery = "SELECT * FROM " + TABLE_DISTRICT + " WHERE " + KEY_DISTRICT_DISTRICT_NAME + " " + KEY_DISTRICT_REGION_ID + " = " + regionId + " AND " + KEY_DISTRICT_STATUS + " = 1 ORDER BY " + KEY_DISTRICT_DISTRICT_ID + " DESC ";
+        if (key != null && key.length() > 0) {
+            //selectQuery = "SELECT "+ KEY_PRODUCT_MASTER_ID + "," + KEY_PRODUCT_BRAND_NAME +  " FROM " + TABLE_PRODUCTS  ;
+            selectQuery = "SELECT  " + KEY_PRODUCT_MASTER_ID + "," + KEY_PRODUCT_BRAND_NAME + "," + KEY_PRODUCTS_PACKETS_COUNT + "," + KEY_PRODUCT_DISCOUNT + "," + KEY_PRODUCTS_CATALOG_URL + " FROM " + TABLE_PRODUCTS + "  where "+ KEY_PRODUCT_BRAND_NAME + " " + "like " + key + " and " +KEY_PRODUCTS_DIVISION_ID + " = " + division_id + " and " + KEY_PRODUCT_CROP_ID + " = " + sel_cropid + " and status=1";
+        }
+
+
+        Log.e("bd query", selectQuery);
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                Products products_pojo = new Products();
+                products_pojo.setProductMasterID(cursor.getString(0));
+                products_pojo.setProductName(cursor.getString(1));
+                // Adding contact to list
+                productsList.add(products_pojo);
+            } while (cursor.moveToNext());
+        }
+
+        // return Products list
+        return productsList;
+    }
+    public ArrayList<Long> addPlannerActivity_Form(ActivityPlanner activityPlanner,String type)
+    {
+        ArrayList<Long> list=new ArrayList<Long>();
+        long i=0;
+        SQLiteDatabase db = this.getWritableDatabase();
+        int k = 0;
+        ContentValues values_companies = new ContentValues();
+        if (type.equals("server")) {
+            values_companies.put(KEY_tfa_list_id, activityPlanner.getTfa_list_id());
+            values_companies.put(KEY_actual__estimation_per_head, activityPlanner.getActual_estimation_per_head());
+            values_companies.put(KEY_sync_status, 1);
+            values_companies.put(KEY_approved_date, activityPlanner.getApproved_date());
+            values_companies.put(KEY_location_lat_lng, activityPlanner.getLocation_lat_lang());
+            values_companies.put(KEY_owner_name, activityPlanner.getOwner_name());
+            values_companies.put(KEY_owner_number, activityPlanner.getOwner_number());
+            values_companies.put(KEY_used_farmers, activityPlanner.getUsed_farmers());
+            values_companies.put(KEY_non_used_farmers, activityPlanner.getNon_used_farmers());
+            values_companies.put(KEY_actual_no_farmers, activityPlanner.getActual_no_farmers());
+            values_companies.put(KEY_actual__total_expences, activityPlanner.getActual_total_expences());
+
+        }
+        values_companies.put(KEY_district_id, activityPlanner.getDistrict_id());
+        values_companies.put(KEY_division_id, activityPlanner.getDivision_id()); // Contact Div_code
+        values_companies.put(KEY_crop_id, activityPlanner.getCrop_id()); // Contact DivName
+        values_companies.put(KEY_product_id, activityPlanner.getProduct_id()); // Contact Div_code
+        values_companies.put(KEY_tfa_activity_master_id, activityPlanner.getTfa_activity_master_id()); // Contact DivName
+
+        values_companies.put(KEY_activity_date, activityPlanner.getActivity_date());
+        values_companies.put(KEY_taluka, activityPlanner.getTaluka());
+        values_companies.put(KEY_village, activityPlanner.getVillage()); // Contact Div_code
+        values_companies.put(KEY_no_of_farmers, activityPlanner.getNo_of_farmers()); // Contact DivName
+        values_companies.put(KEY_estimation_per_head, activityPlanner.getEstimation_per_head()); // Contact Div_code
+        values_companies.put(KEY_total_expences, activityPlanner.getTotal_expences()); // Contact DivName
+        values_companies.put(KEY_advance_required, activityPlanner.getAdvance_required()); // Contact Div_code
+        values_companies.put(KEY_conducting_place, activityPlanner.getConducting_place()); // Contact Div_code
+        values_companies.put(KEY_user_id, activityPlanner.getUser_id()); // Contact DivName
+        values_companies.put(KEY_created_user_id, activityPlanner.getCreated_user_id()); // Contact Div_code
+        values_companies.put(KEY_user_email, activityPlanner.getUser_email()); // Contact DivName
+        values_companies.put(KEY_status, activityPlanner.getStatus()); // Contact Div_code
+        if (type.equals("local"))
+        {
+            values_companies.put(KEY_sync_status, 0); // Contact Div_code
+        }
+        values_companies.put(KEY_created_datetime, activityPlanner.getCreated_datetime()); // Contact Div_code
+        values_companies.put(KEY_updated_datetime, activityPlanner.getUpdated_datetime()); // Contact Div_code
+        values_companies.put(KEY_approval_status, activityPlanner.getApproval_status()); // Contact Div_code
+        values_companies.put(KEY_approval_comments, activityPlanner.getApproval_comments()); // Contact Div_code
+        values_companies.put(KEY_approved_by, activityPlanner.getApproved_by()); // Contact Div_code
+        values_companies.put(KEY_approved_date, activityPlanner.getUpdated_datetime()); // Con
+
+
+
+        i = db.insert(TABLE_TFA_ACTIVITYLIST, null, values_companies);
+        list.add(i);
+        Log.d("hi",String.valueOf(activityPlanner.getApproval_status()+"  "+activityPlanner.getCreated_user_id()));
+
+        ContentValues values_approvalhistory = new ContentValues();
+        values_approvalhistory.put(KEY_tfa_list_id, i);
+        values_approvalhistory.put(KEY_tfa_approval_status, activityPlanner.getApproval_status());
+        values_approvalhistory.put(KEY_tfa_approval_comment, activityPlanner.getApproval_comments());
+        values_approvalhistory.put(KEY_tfa_approved_user_id, activityPlanner.getUser_id());
+        values_approvalhistory.put(KEY_status, activityPlanner.getStatus()); // Contact Div_code
+        values_approvalhistory.put(KEY_sync_status, 0); // Contact Div_code
+        values_approvalhistory.put(KEY_created_datetime, activityPlanner.getCreated_datetime()); // Contact Div_code
+        values_approvalhistory.put(KEY_updated_datetime, activityPlanner.getUpdated_datetime()); // Contact Div_code
+
+  /*      values_approvalhistory.put(KEY_tfa_approval_name, activityPlanner.getApproval_name()); // Contact Div_code
+        values_approvalhistory.put(KEY_tfa_approval_role, activityPlanner.getApproval_role()); // Contact Div_code*/  //anil
+        values_approvalhistory.put(KEY_tfa_approval_mail, activityPlanner.getApproval_mail()); // Contact Div_code
+        values_approvalhistory.put(KEY_tfa_approval_mobile, activityPlanner.getApproval_pnno()); // Con
+        long ijk = db.insert(TABLE_TFA_APPROVAL_HISTORY, null, values_approvalhistory);
+        list.add(ijk);
+
+
+        if (i > 0) {
+            k = 1;
+            Log.d("anil_TABLE_TFA_ACTIVITYLIST", String.valueOf(i));
+        }
+        if (i < 0) {
+            k = 0;
+            Log.d("anil_TABLE_TFA_ACTIVITYLIST", String.valueOf(i));
+        }
+
+        db.close(); // Closing database connection
+        return  list;
+    }
+    public String update_ids_tfaformactivity(String Id, JSONArray ids, String loc_Id, ArrayList<String> loc_ids
+            , String apprvloc, String apprvserver, String name, String role) {
+
+        String status="";
+        String query="";
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values_update = new ContentValues();
+        values_update.put(KEY_tfa_list_id,Id);
+
+        int i=db.update(TABLE_TFA_ACTIVITYLIST,
+                values_update,
+                KEY_tfa_list_id + " = ?  " ,
+                new String[]{loc_Id});
+
+        Log.d("chk",String.valueOf(i));
+        int j;
+        for(j=0;j<ids.length();j++)
+        {
+            try
+            {
+                String object=ids.getString(j);
+                ContentValues values_update2 = new ContentValues();
+                values_update2.put(KEY_tfa_village_id,object);
+                int i2=db.update(TABLE_TFA_VILLAGELIST,
+                        values_update2,
+                        KEY_tfa_village_id + " = ?  " ,
+                        new String[]{loc_ids.get(j)});
+                Log.d("chk",String.valueOf(i2));
+
+            }catch (Exception e)
+            {
+
+            }
+
+        }
+        //public boolean updateData(String id,String name,String surname,String marks) {
+
+      /*  ContentValues contentValues = new ContentValues();
+        contentValues.put(KEY_tfa_approval_name,"");
+        contentValues.put(KEY_tfa_approval_role,"");
+        contentValues.put(KEY_tfa_pending_by_name,name);
+        contentValues.put(KEY_tfa_pending_by_role,role);
+        db.update(TABLE_TFA_APPROVAL_HISTORY, contentValues, KEY_tfa_approval_id+" = ?",new String[] { apprvloc });
+        //  return true;
+        //  }
+*/
+       ContentValues values_update3 = new ContentValues();
+        values_update3.put(KEY_tfa_approval_id,12);    //anil unique constrain failled
+       /* values_update3.put(KEY_tfa_list_id,Id);                  //tfa_list_id
+        values_update3.put(KEY_tfa_approval_name,"");
+        values_update3.put(KEY_tfa_approval_role,"");
+        values_update3.put(KEY_tfa_pending_by_name,name);
+        values_update3.put(KEY_tfa_pending_by_role,role);*/
+//
+        int k=db.update(TABLE_TFA_APPROVAL_HISTORY,
+                values_update3,
+                KEY_tfa_approval_id + " = ?  " ,
+                new String[]{apprvloc});
+
+        Log.d("chk",String.valueOf(k));
+        if(i>0&&j==loc_ids.size()&&k>0)
+        {
+            status="sucess";
+        }
+        db.close();
+
+        return  status;
     }
 }
