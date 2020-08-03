@@ -12,6 +12,9 @@ import static com.nsl.beejtantra.DatabaseHandler.TABLE_PRODUCT_PRICING_SURVEY;
  * Created by Praveen on 12/5/2016.
  */
 public class Constants {
+   /* http://devapp.nslsaathi.com/uploads/tfa_list_images/5f24faa543890.png*/
+
+
     //base url for retofit
    /* public static final String IMAGE_URL = "http://suprasoftapp.com/nsl_dev/";
     public static final String BASE_URL = "http://suprasoftapp.com/nsl_dev/Api";
