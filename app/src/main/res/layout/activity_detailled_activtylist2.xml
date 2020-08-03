@@ -1,0 +1,343 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_height="match_parent">
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:popupTheme="@style/AppTheme.PopupOverlay"
+        app:style="@style/MyToolbar"
+        app:title=" "
+        app:titleTextColor="@color/white"><!--here-->
+
+        <com.nsl.beejtantra.commonutils.CustomTextViewBold
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="@string/activityplannerdet"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16sdp" />
+    </android.support.v7.widget.Toolbar>
+    <android.support.v7.widget.CardView
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/cv"
+        android:layout_width="match_parent"
+        app:cardCornerRadius="@dimen/_8sdp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_4sdp"
+        android:layout_marginLeft="@dimen/_1sdp"
+        android:layout_marginRight="@dimen/_1sdp">
+        <RelativeLayout
+            android:id="@+id/rel"
+            android:layout_marginLeft="@dimen/_15sdp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="8dp"
+            android:orientation="vertical">
+            <TextView
+                android:layout_alignParentTop="true"
+                android:id="@+id/tv_activity"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp"
+                android:inputType="textMultiLine"
+                android:text="Type  : Crop cutting experiment"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
+
+            <TextView
+                android:id="@+id/tv_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentTop="true"
+                android:visibility="gone"
+                android:padding="@dimen/_3sdp"
+                android:text="planned date\n12 oct 2019"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/_10sdp" />
+            <TextView
+                android:layout_marginTop="@dimen/_3sdp"
+                android:layout_below="@+id/tv_activity"
+                android:id="@+id/tv_place"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp"
+                android:textSize="@dimen/_12sdp"
+                android:text="Place : Wanaparthy,kothaguda"
+                android:textColor="@color/black" />
+            <TextView
+                android:layout_marginTop="@dimen/_3sdp"
+                android:layout_below="@+id/tv_place"
+                android:id="@+id/tv_crop"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp"
+                android:text="Crop  : Field Crops,Paddy"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_12sdp" />
+
+            <TextView
+                android:layout_marginTop="@dimen/_3sdp"
+                android:layout_below="@+id/tv_crop"
+                android:id="@+id/tv_formers1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp"
+                android:text="Count : 40 farmers(20,000)"
+                android:textSize="@dimen/_12sdp"
+                android:textColor="@color/black" />
+
+            <TextView
+                android:layout_marginTop="@dimen/_3sdp"
+                android:layout_below="@+id/tv_formers1"
+                android:id="@+id/tv_adv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="1dp"
+                android:text="Adv   : 40 farmers(20,000)"
+                android:textSize="@dimen/_12sdp"
+                android:textColor="@color/black" />
+
+            <!--  <TextView
+                  android:layout_width="30dp"
+                  android:layout_height="30dp"
+                  android:textColor="@color/black"
+                  android:paddingTop="20dp"
+                  android:text="+"
+                  android:textSize="@dimen/_15sdp"
+                  android:layout_below="@+id/tv_formers1"
+                  android:layout_marginBottom="0dp"
+                  android:layout_alignParentRight="true"/>-->
+
+            <!--<android.support.design.widget.FloatingActionButton
+                android:textSize="@dimen/_8sdp"
+
+                android:layout_width="30dp"
+                android:layout_height="30dp"
+               />-->
+
+            <ImageView
+                android:id="@+id/edit_view"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:layout_below="@+id/tv_crop"
+                android:layout_alignRight="@+id/tv_formers1"
+                android:layout_alignParentEnd="true"
+                android:layout_marginTop="3dp"
+
+                android:src="@drawable/edit"
+                android:textSize="@dimen/_11sdp" />
+
+            <TextView
+                android:id="@+id/tv_status"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentEnd="true"
+                android:layout_below="@+id/tv_crop"
+                android:padding="@dimen/_3sdp"
+                android:text="20,000 Rs"
+                android:visibility="gone"
+                android:textColor="@color/colorPrimary"
+                android:textSize="@dimen/_10sdp" />
+
+
+
+
+
+        </RelativeLayout>
+
+
+
+    </android.support.v7.widget.CardView>
+
+
+
+
+
+    <FrameLayout
+        android:id="@+id/fl_accept_reject"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_margin="@dimen/_8sdp">
+
+        <LinearLayout
+            android:id="@+id/ll_accept_reject"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_30sdp"
+            android:layout_below="@+id/ll_horizontal"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <ImageView
+                android:id="@+id/tv_reject"
+                android:layout_width="@dimen/_30sdp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:background="@drawable/background_orange"
+                android:padding="@dimen/_8sdp"
+                android:src="@drawable/delete"
+                android:visibility="visible" />
+
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+                android:id="@+id/tv_approvalstatus"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="end"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:background="@drawable/background_green"
+                android:gravity="center"
+                android:inputType="textMultiLine"
+                android:text="Status"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_8sdp" />
+
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+                android:id="@+id/tv_accept"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:layout_weight="1"
+                android:background="@drawable/background_green"
+                android:gravity="center"
+                android:text="APPROVE"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.nsl.beejtantra.ButtonPlus
+                android:id="@+id/view_comments"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_alignParentRight="true"
+                android:layout_gravity="right"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:layout_marginRight="@dimen/_8sdp"
+                android:layout_weight="1"
+                android:background="@drawable/background_orange"
+                android:focusable="false"
+                android:focusableInTouchMode="false"
+                android:gravity="center"
+                android:text="View"
+                android:textAlignment="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp"
+                android:visibility="gone" />
+
+
+        </LinearLayout>
+
+    </FrameLayout>
+
+
+    <RelativeLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_below="@+id/cv"
+        android:background="@color/listview_header_color">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:weightSum="4">
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_marginLeft="@dimen/_10sdp"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:text="S#"
+                android:layout_weight="1.2"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp" />
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+                android:id="@+id/textViewTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_centerVertical="true"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="@string/s_village_name"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp" />
+
+            <!--  <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+                  android:layout_width="0dp"
+                  android:layout_height="wrap_content"
+                  android:layout_weight="0.3"
+                  android:gravity="center"
+                  android:text="O.Qty"
+                  android:textAllCaps="true"
+                  android:textColor="@color/white"
+                  android:textSize="@dimen/_11sdp" />-->
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+                android:id="@+id/customTextViewNormal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Current Sale"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp" />
+
+            <!-- <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+                 android:layout_width="0dp"
+                 android:layout_height="wrap_content"
+                 android:layout_weight="0.3"
+                 android:gravity="center"
+                 android:text="P/U"
+                 android:textAllCaps="true"
+                 android:textColor="@color/white"
+                 android:textSize="@dimen/_11sdp" />-->
+
+            <com.nsl.beejtantra.commonutils.CustomTextViewNormal
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/_10sdp"
+                android:layout_weight="1"
+                android:text="Potential"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_11sdp" />
+
+
+
+        </LinearLayout>
+    </RelativeLayout>
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header"
+        android:divider="@null">
+    </android.support.v7.widget.RecyclerView>
+</RelativeLayout>
