@@ -163,6 +163,7 @@ public class Constants {
     public static final String URL_TfA_SERVER_TO_LOCAl = "tfa_server_to_local";
     public static final String URL_TFA_ORDER_APPROVAL = URL_NSL_MAIN + "tfa_user_approval";
     public static final String URL_TFA_LIST_DATA= URL_NSL_MAIN + "tfa_list_data";
+    public static final String URL_TFA_LIST_DATA_SECOND= URL_NSL_MAIN + "tfa_list_data_second";
 
 
     public interface Stages {

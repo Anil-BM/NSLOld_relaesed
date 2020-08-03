@@ -556,4 +556,6 @@
     <string name="activityplannerdet">Activity Planner Details</string>
     <string name="s_village_name">Village Name</string>
     <string name="actdtls">Activity Details</string>
+    <string name="fieldactivity">Field Activity</string>
+    <string name="activity_status">Activity Status</string>
 </resources>

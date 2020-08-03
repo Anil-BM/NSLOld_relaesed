@@ -92,8 +92,7 @@ public class FragmentOrderIndent extends Fragment {
 
         View view          = inflater.inflate(R.layout.fragment_orderindent, container, false);
         progressDialog = new ProgressDialog(getActivity());
-        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mMessageReceiver,
-                new IntentFilter("custom-message"));
+
         db = new DatabaseHandler(getActivity());
         try {
             progressDialog = new ProgressDialog(getActivity());
@@ -519,5 +518,16 @@ public class FragmentOrderIndent extends Fragment {
 
     }
 
+    @Override
+    public void onResume() {
+        super.onResume();
+        LocalBroadcastManager.getInstance(getActivity()).registerReceiver(mMessageReceiver,
+                new IntentFilter("custom-message"));
+    }
 
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        LocalBroadcastManager.getInstance(getActivity()).unregisterReceiver(mMessageReceiver);
+    }
 }

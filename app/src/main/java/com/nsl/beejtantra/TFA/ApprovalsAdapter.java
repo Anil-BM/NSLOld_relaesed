@@ -152,9 +152,9 @@ public class ApprovalsAdapter extends BaseAdapter {
 
                      approvalHolder.approvalStatus.setImageResource(R.drawable.approved_icon);
                      approvalHolder.approvalUserName.setText(serviceOrderApproval.pending_approval_name);
-                  if(i==(orderApprovals.size()-1))
+                  if(i==0)
                   {
-                     approvalHolder.approvalStatus.setImageResource(R.drawable.pending_icon);
+                     approvalHolder.approvalStatus.setImageResource(R.drawable.approved_icon);
                      approvalHolder.approvalUserName.setText("Field Activity Approvals");
                  }
 
@@ -202,12 +202,12 @@ public class ApprovalsAdapter extends BaseAdapter {
             }
             if (finalappraoval_status == 8)
             {
-                if (i == 0) {
+                approvalHolder.approvalStatus.setImageResource(R.drawable.approved_icon);
+                approvalHolder.approvalUserName.setText(serviceOrderApproval.pending_approval_name);
+                if(i==0)
+                {
                     approvalHolder.approvalStatus.setImageResource(R.drawable.approved_icon);
-                    approvalHolder.approvalUserName.setText(serviceOrderApproval.approval_name);
-                } else {
-                    approvalHolder.approvalStatus.setImageResource(R.drawable.approved_icon);
-                    approvalHolder.approvalUserName.setText(serviceOrderApproval.approval_name);
+                    approvalHolder.approvalUserName.setText("Field Activity Approvals");
                 }
 
             }

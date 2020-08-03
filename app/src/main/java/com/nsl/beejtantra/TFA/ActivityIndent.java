@@ -3,8 +3,10 @@ package com.nsl.beejtantra.TFA;
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -15,6 +17,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.FloatingActionButton;
+import android.support.v4.content.LocalBroadcastManager;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -40,12 +43,14 @@ import android.widget.Toast;
 import com.leinardi.android.speeddial.SpeedDialActionItem;
 import com.nsl.beejtantra.Constants;
 import com.nsl.beejtantra.DatabaseHandler;
+import com.nsl.beejtantra.MainActivity;
 import com.nsl.beejtantra.MarshMallowPermission;
 import com.nsl.beejtantra.R;
 import com.nsl.beejtantra.SelectedCities;
 import com.nsl.beejtantra.Utility;
 import com.nsl.beejtantra.commonutils.Common;
 import com.nsl.beejtantra.commonutils.NetworkChangeListenerActivity;
+import com.nsl.beejtantra.orderindent.FragmentOrderIndent;
 import com.nsl.beejtantra.orderindent.ViewSalesOrderCustomerDetailsActivity;
 import com.nsl.beejtantra.pojo.RejectionCommentVo;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -89,6 +94,8 @@ import static com.nsl.beejtantra.DatabaseHandler.KEY_TABLE_SERVICEORDER_DETAIL_P
 import static com.nsl.beejtantra.DatabaseHandler.KEY_TABLE_USERS_FIRST_NAME;
 import static com.nsl.beejtantra.DatabaseHandler.KEY_TABLE_USERS_MASTER_ID;
 import static com.nsl.beejtantra.DatabaseHandler.KEY_USER_ID;
+import static com.nsl.beejtantra.DatabaseHandler.KEY_activity_date;
+import static com.nsl.beejtantra.DatabaseHandler.KEY_tfa_list_id;
 import static com.nsl.beejtantra.DatabaseHandler.TABLE_CROPS;
 import static com.nsl.beejtantra.DatabaseHandler.TABLE_DEMANDGENERATION;
 import static com.nsl.beejtantra.DatabaseHandler.TABLE_DIVISION;
@@ -150,6 +157,14 @@ public class ActivityIndent extends NetworkChangeListenerActivity  {
 
     List<CalendarDay> list = new ArrayList<CalendarDay>();
     @SuppressLint("RestrictedApi")
+    private BroadcastReceiver mMessageReceiver = new BroadcastReceiver() {
+        @Override
+        public void onReceive(Context context, Intent intent) {
+
+            new Async_gettfalist().execute();
+
+        }
+    };
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -165,13 +180,36 @@ public class ActivityIndent extends NetworkChangeListenerActivity  {
             public void onClick(View view) {
                 //Toast.makeText(getApplicationContext(),datefromcalander,Toast.LENGTH_SHORT).show();
 
-                if(selectDistributor.getSelectedItemPosition()!=0) {
-                    Intent it = new Intent(ActivityIndent.this, ActivityIndentForm.class);
-                    it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    it.putExtra("dateselected", datefromcalander);
-                    it.putExtra("idselected", seluserId);
-                    Log.d("hi",seluserId+"  "+userId);
-                    startActivity(it);
+                if (Common.haveInternet(getApplicationContext())) {
+                    if(selectDistributor.getSelectedItemPosition()!=0) {
+                        String dtStart = datefromcalander;
+                        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
+                        try {
+                            Date datesel = format.parse(dtStart);
+                            Date datetoday = new Date();
+
+                            if(datesel.compareTo(datetoday)>0) {
+                                 Intent it = new Intent(ActivityIndent.this, ActivityIndentForm.class);
+                                 it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                 it.putExtra("dateselected", datefromcalander);
+                                 it.putExtra("idselected", seluserId);
+                                 Log.d("hi", seluserId + "  " + userId);
+                                 startActivity(it);
+                             }
+                            else {
+                                Toast.makeText(getApplicationContext(),"Please select future date",Toast.LENGTH_LONG).show();
+                            }
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+
+
+                    }
+
+                }
+                else
+                {
+                    Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
                 }
 
 
@@ -268,7 +306,7 @@ public class ActivityIndent extends NetworkChangeListenerActivity  {
         else
         {
             ll_select.setVisibility(View.VISIBLE);
-            fab.setVisibility(View.VISIBLE);
+            fab.setVisibility(View.GONE);
         }
         //Toast.makeText(getApplicationContext(),String.valueOf(datefromcalander),Toast.LENGTH_LONG).show();
         if (role != Constants.Roles.ROLE_17) {
@@ -390,15 +428,24 @@ public class ActivityIndent extends NetworkChangeListenerActivity  {
             holder.ll_layout.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
+                    if (Common.haveInternet(getApplicationContext())) {
+                        if(selectDistributor.getSelectedItemPosition()!=0) {
+                            ArrayList<HashMap<String, String>> favouriteItem2 = new ArrayList<HashMap<String, String>>();
+                            favouriteItem2.add(favouriteItem.get(position));
 
-                    ArrayList<HashMap<String, String>> favouriteItem2 = new ArrayList<HashMap<String, String>>();
-                    favouriteItem2.add(favouriteItem.get(position));
 
+                            Intent intent = new Intent(ActivityIndent.this, DetailledActivtylist.class);
+                            intent.putExtra("favouriteItem", favouriteItem2);
+                            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                            startActivity(intent);
+                        }
 
-                    Intent intent = new Intent(ActivityIndent.this, DetailledActivtylist.class);
-                    intent.putExtra("favouriteItem", favouriteItem2);
-                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(intent);
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+                    }
+
 
                 }
             });
@@ -565,7 +612,8 @@ public class ActivityIndent extends NetworkChangeListenerActivity  {
     @Override
     protected void onResume() {
         super.onResume();
-
+        LocalBroadcastManager.getInstance(getApplicationContext()).registerReceiver(mMessageReceiver,
+                new IntentFilter("custom-message"));
     }
 
     @Override
@@ -586,7 +634,7 @@ public class ActivityIndent extends NetworkChangeListenerActivity  {
         adaptercity.add("Select User");
         try {
             String selectQuery;
-            selectQuery = "SELECT " + KEY_TABLE_USERS_FIRST_NAME + "," + KEY_TABLE_USERS_MASTER_ID + " FROM " + TABLE_USERS + "  WHERE " + db.KEY_TABLE_USERS_STATUS + " = 1 and  user_id in (" + team + ")  ";
+            selectQuery = "SELECT " + KEY_TABLE_USERS_FIRST_NAME + "," + KEY_TABLE_USERS_MASTER_ID + " FROM " + TABLE_USERS + "  WHERE " + db.KEY_TABLE_USERS_STATUS + " = 1 and  role_id ='19'  ";
             sdbw = db.getWritableDatabase();
             cursor = sdbw.rawQuery(selectQuery, null);
             System.out.println("cursor count " + "\n selectQuery" + selectQuery);
@@ -594,16 +642,16 @@ public class ActivityIndent extends NetworkChangeListenerActivity  {
                 do {
                     SelectedCities cities2 = new SelectedCities();
 
-                    if (String.valueOf(cursor.getString(1)).equalsIgnoreCase(Common.getUserIdFromSP(this))) {
+                  /*  if (String.valueOf(cursor.getString(1)).equalsIgnoreCase(Common.getUserIdFromSP(this))) {
                        // adaptercity.add("SELF");
                     }
                     else
-                    {
+                    {*/
                         adaptercity.add(cursor.getString(0));
                         cities2.setCityId(cursor.getString(1));
                         cities2.setCityName(cursor.getString(0));
                         organisations.add(cities2);
-                    }
+                   // }
 
                 } while (cursor.moveToNext());
             } else {
@@ -687,7 +735,7 @@ public class ActivityIndent extends NetworkChangeListenerActivity  {
                         +"(SELECT crop_name FROM crops WHERE crops.crop_id=tfa.crop_id) AS crop_name"
                         +" from tfa_activity_list tfa where       (tfa.approval_status<='4' or  tfa.approval_status='9') and "
                         +"                activity_date='"+datefromcalander+"' and user_id='"+seluserId+"'"
-                        +"                order by tfa_approval_id DESC limit 1";
+                        +"                order by tfa.tfa_list_id DESC";
 
                 sdbw = db.getWritableDatabase();
 
@@ -697,6 +745,7 @@ public class ActivityIndent extends NetworkChangeListenerActivity  {
 
                 Log.d("plans", selectQuery);
                 Cursor cursor = sdbw.rawQuery(selectQuery, null);
+                favouriteItem.clear();
                 if (cursor.moveToFirst()) {
                     do {
                         Log.d("plans", "no plans11");
@@ -721,7 +770,13 @@ public class ActivityIndent extends NetworkChangeListenerActivity  {
                         map.put("created_user_id",cursor.getString(14));
                         map.put("approval_status",cursor.getString(15));
                         map.put("crop_name",cursor.getString(19));
-                        favouriteItem.clear();
+
+
+
+
+
+
+
                         favouriteItem.add(map);
 
                     } while (cursor.moveToNext());
@@ -770,7 +825,7 @@ public class ActivityIndent extends NetworkChangeListenerActivity  {
         protected String doInBackground(Void... params) {
 
             try {
-                String selectQuery = "SELECT DISTINCT"+ " activity_date " +"FROM " +  TABLE_TFA_ACTIVITYLIST + "  where "+  "(approval_status<='4' or  approval_status<='9') and " + KEY_USER_ID + " = " + seluserId+"  "+" order by  activity_date asc";
+                String selectQuery = "SELECT DISTINCT "+ KEY_activity_date+" FROM " +  TABLE_TFA_ACTIVITYLIST + "  where "+  "(approval_status<='4' or  approval_status='9') and " + KEY_USER_ID + " = " + seluserId+"  "+" order by  "+KEY_activity_date+" asc";
 
                 sdbw = db.getWritableDatabase();
                 Log.e("no plans", selectQuery);
@@ -916,15 +971,24 @@ public class ActivityIndent extends NetworkChangeListenerActivity  {
 
             if (jsonData != null) {
                 try {
-
                     JSONObject companyarray = new JSONObject(jsonData);
+                    JSONArray tfa_list_data=companyarray.getJSONArray("tfa_list_data");
+
+                    if(companyarray.get("Status").equals("error"))
+                    {
+                        if(tfa_list_data.length()==0)
+                        {
+                            db.deleteDataByTableName(TABLE_TFA_ACTIVITYLIST);
+                            db.deleteDataByTableName(TABLE_TFA_VILLAGELIST);
+                            db.deleteDataByTableName(TABLE_TFA_APPROVAL_HISTORY);
+                        }
+                    }
                     if(companyarray.get("Status").equals("Success"))
                     {
                         db.deleteDataByTableName(TABLE_TFA_ACTIVITYLIST);
                         db.deleteDataByTableName(TABLE_TFA_VILLAGELIST);
 
 
-                        JSONArray tfa_list_data=companyarray.getJSONArray("tfa_list_data");
                         for(int i=0;i<tfa_list_data.length();i++)
                         {
 
@@ -1087,7 +1151,8 @@ public class ActivityIndent extends NetworkChangeListenerActivity  {
         t1=new Thread(()->
         {
             try {
-                String selectQuery = "SELECT DISTINCT"+ " activity_date " +"FROM " +  TABLE_TFA_ACTIVITYLIST + "  where "+  "(approval_status<='4' or  approval_status<='9') and " + KEY_USER_ID + " = " + seluserId+"  "+" order by  activity_date asc";
+                String selectQuery = "SELECT DISTINCT "+  KEY_activity_date  +" FROM " +  TABLE_TFA_ACTIVITYLIST + "  where "+  "(approval_status<='4' or  approval_status='9') and " + KEY_USER_ID + " = " + seluserId+"  "+" order by  "+KEY_activity_date+" asc";
+
 
                 sdbw = db.getWritableDatabase();
                 Log.e("no plans", selectQuery);
@@ -1147,4 +1212,18 @@ public class ActivityIndent extends NetworkChangeListenerActivity  {
 
     }
 
+
+
+    @Override
+    public void onDestroy() {
+        super.onDestroy();
+        LocalBroadcastManager.getInstance(getApplicationContext()).unregisterReceiver(mMessageReceiver);
+    }
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent it=new Intent(ActivityIndent.this, MainActivity.class);
+        it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(it);
+    }
 }

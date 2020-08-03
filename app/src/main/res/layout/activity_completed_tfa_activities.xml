@@ -69,7 +69,7 @@
                 android:layout_height="wrap_content"
                 android:padding="1dp"
                 android:textSize="@dimen/_12sdp"
-                android:text="Place : Wanaparthy,kothaguda"
+                android:text="place"
                 android:textColor="@color/black" />
             <TextView
                 android:layout_marginTop="@dimen/_3sdp"
@@ -135,19 +135,36 @@
                 android:textSize="@dimen/_11sdp" />
 
             <TextView
-                android:id="@+id/tv_status"
+                android:layout_marginTop="18dp"
+                android:id="@+id/tv_estimations"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_below="@+id/tv_crop"
+                android:layout_below="@+id/tv_adv"
                 android:padding="@dimen/_3sdp"
-                android:text="20,000 Rs"
-                android:visibility="gone"
-                android:textColor="@color/colorPrimary"
-                android:textSize="@dimen/_10sdp" />
+                android:text="Estiamtions:"
+                android:textColor="@color/black"
+                android:textSize="@dimen/_14sdp" />
 
-
-
+            <TextView
+                android:layout_marginTop="@dimen/_3sdp"
+                android:layout_below="@+id/tv_estimations"
+                android:id="@+id/tv_act_formers1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp"
+                android:text="Count : 40 farmers(20,000)"
+                android:textSize="@dimen/_12sdp"
+                android:textColor="@color/black" />
+            <TextView
+                android:layout_marginTop="@dimen/_3sdp"
+                android:layout_below="@+id/tv_act_formers1"
+                android:id="@+id/tv_act_geo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="1dp"
+                android:text="Loaction : 40 farmers(20,000)"
+                android:textSize="@dimen/_12sdp"
+                android:textColor="@color/black" />
 
 
         </RelativeLayout>

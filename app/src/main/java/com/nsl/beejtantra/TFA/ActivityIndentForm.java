@@ -41,6 +41,7 @@ import com.nsl.beejtantra.Constants;
 import com.nsl.beejtantra.Crops;
 import com.nsl.beejtantra.CropsFragmentSalesorderActivity;
 import com.nsl.beejtantra.DatabaseHandler;
+import com.nsl.beejtantra.MainActivity;
 import com.nsl.beejtantra.NewCropsFragmentSalesOrderList;
 import com.nsl.beejtantra.PlanScheduleFormActivity;
 import com.nsl.beejtantra.Products;
@@ -116,6 +117,7 @@ public class ActivityIndentForm extends BaseActivity implements View.OnClickList
     MyAdapter mAdapter;
     ProgressDialog progressDialog;
     boolean isenabled;
+    JSONArray village_list_array_tmp;
     int role;
     EditText et_date,et_villages_list,et_nooffarmers,et_estimatedperhead,et_totalexp,et_village,et_adv,
             et_taluka,et_noofvillages;
@@ -341,33 +343,32 @@ public class ActivityIndentForm extends BaseActivity implements View.OnClickList
                     @Override
                     public void onClick(View view) {
 
+                          if(ar_vill!=null && ar_vill.length>0) {
+                              village_list_array_tmp = new JSONArray();
 
-                        JSONArray village_list_array_tmp=new JSONArray();
-
-                        for(int i1=0;i1<ar_vill.length;i1++)
-                        {
-                            JSONObject villages_obj_tmp = new JSONObject();
-                            try
-                            {
-                                if(ar_vill!=null && ar_vill.length>0&&ar_cs!=null && ar_cs.length>0&&ar_p!=null && ar_p.length>0)
-                                {
-                                    villages_obj_tmp.put("village_name", ar_vill[i1]);
-                                    villages_obj_tmp.put("current_sal", ar_cs[i1]);
-                                    villages_obj_tmp.put("potential", ar_p[i1]);
-                                }
-                                else
-                                {
-                                    Toast("Enter all details");
-                                }
-                            } catch (JSONException e) {
-                                e.printStackTrace();
-                            }
-                            village_list_array_tmp.put(villages_obj_tmp);
+                              for (int i1 = 0; i1 < ar_vill.length; i1++) {
+                                  JSONObject villages_obj_tmp = new JSONObject();
+                                  try {
+                                      if (ar_vill != null && ar_vill.length > 0 && ar_cs != null && ar_cs.length > 0 && ar_p != null && ar_p.length > 0) {
+                                          villages_obj_tmp.put("village_name", ar_vill[i1]);
+                                          villages_obj_tmp.put("current_sal", ar_cs[i1]);
+                                          villages_obj_tmp.put("potential", ar_p[i1]);
+                                      } else {
+                                          Toast("Enter all details");
+                                      }
+                                  } catch (JSONException e) {
+                                      e.printStackTrace();
+                                  }
+                                  village_list_array_tmp.put(villages_obj_tmp);
 
 
-                        }
-                        et_villages_list.setText(village_list_array_tmp.toString());
-                        dialog.dismiss();
+                              }
+                              et_villages_list.setText(village_list_array_tmp.toString());
+                              dialog.dismiss();
+                          }
+                          else {
+                              Toast.makeText(getApplicationContext(),"dsj",Toast.LENGTH_LONG).show();
+                          }
                     }
 
 
@@ -565,8 +566,13 @@ public class ActivityIndentForm extends BaseActivity implements View.OnClickList
         myRunnable2 = new MyRunnable2();
         myRunnable3 = new MyRunnable3();
 
-
-        entry = db.getactvitiestfa().entrySet().iterator().next();
+        try {
+            entry = db.getactvitiestfa().entrySet().iterator().next();
+        }
+        catch (Exception e)
+        {
+            Toast(e.toString());
+        }
         sp_activity.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_item, R.id.customSpinnerItemTextView, entry.getKey() ));
 
         custom_font = Typeface.createFromAsset(getAssets(),  "fonts/SEGOEWP-LIGHT.TTF");
@@ -804,11 +810,17 @@ public class ActivityIndentForm extends BaseActivity implements View.OnClickList
     }
 
     public void submitact(View v) throws JSONException {
-        Handler handlerbtn = Common.disableClickEvent(btn_appt, true);
+
         if (T(et_district).equals("") || districtId.equals("0")) {
             Toast("Please select district");
             et_district.requestFocus();
-        } else if (spin_division.getSelectedItemPosition() == 0) {
+
+        }
+        else if(village_list_array_tmp==null||!village_list_array_tmp.getJSONObject(0).has("village_name"))
+        {
+            Toast("Please enter village list");
+        }
+        else if (spin_division.getSelectedItemPosition() == 0) {
             Toast("Please select division");
         } else if (spin_crop.getSelectedItemPosition() == 0) {
             Toast("Please select crop");
@@ -837,6 +849,7 @@ public class ActivityIndentForm extends BaseActivity implements View.OnClickList
             Toast("Please enter advance required");
             et_adv.requestFocus();
         }
+
         else {
 
             getuserdetails();
@@ -926,16 +939,17 @@ public class ActivityIndentForm extends BaseActivity implements View.OnClickList
                 Long l1= new Long(ch1);
                 int i1=l1.intValue();
                 Log.d("ch1",String.valueOf(i1));
-                Common.disableClickEvent(btn_appt, handlerbtn);
+
             }
 
 
-            if(ch>0&&ch1>0)
+            if(ch>0)   //remove local anil // if(ch>0&&ch1>0) add local anil
             {
                 if (Common.haveInternet(getApplicationContext()))
                 {
 
-
+                    Handler handlerbtn = Common.disableClickEvent(btn_appt, true);
+                    Common.disableClickEvent(btn_appt, handlerbtn);
 
                     Calendar c1 = Calendar.getInstance();
                     SimpleDateFormat sdf1 = new SimpleDateFormat("yyyy-MM-dd");
@@ -945,8 +959,27 @@ public class ActivityIndentForm extends BaseActivity implements View.OnClickList
                     mainobj.put("division_id",divisionId);
                     mainobj.put("crop_id",cropId);
                     mainobj.put("product_id",ProductMasterId);
+                    mainobj.put("approval_status",apprv_sts2);
 
-                    mainobj.put("tfa_activity_master_id",entry.getValue().get(sp_activity.getSelectedItemPosition()));
+                            try{ mainobj.put("tfa_activity_master_id",entry.getValue().get(sp_activity.getSelectedItemPosition()));}
+                            catch (IllegalStateException e ){
+                                Toast(e.getMessage());
+                                Toast("Please Sync Data and Upadte form");
+                                Toast("Please Sync Data and Upadte form");
+                                Intent it = new Intent(ActivityIndentForm.this, MainActivity.class);
+                                it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(it);     //local anil remove
+                            }
+                            catch (ArrayIndexOutOfBoundsException e)
+                            {
+                                Toast(e.getMessage());
+                                Toast("Please Sync Data and Upadte form");
+                                Toast("Please Sync Data and Upadte form");
+                                Intent it = new Intent(ActivityIndentForm.this, MainActivity.class);
+                                it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(it);     //local anil remove
+                            }
+
                     mainobj.put("activity_date",T(et_date));
                     mainobj.put("taluka",T(et_taluka));
                     mainobj.put("village",T(et_village));
@@ -991,13 +1024,13 @@ public class ActivityIndentForm extends BaseActivity implements View.OnClickList
                         {
                             JSONObject villages_obj = new JSONObject();
                             try {
-                                int ch11;
+                               /* int ch11;
                                 Long l2 = new Long(ch1);
                                 int i2 = l2.intValue();
                                 ch11 = i2 - (ar_vill.length - (JK + 1));
                                 al_localids_vill.add(String.valueOf(ch11));
                                 Log.d("ch11", String.valueOf(ch11));
-                                villages_obj.put("tfa_village_id", String.valueOf(ch11));
+                                villages_obj.put("tfa_village_id", String.valueOf(ch11));*/  //local anil add this
                                 villages_obj.put("tfa_list_id", ch);
                                 villages_obj.put("village_name", ar_vill[JK]);
                                 villages_obj.put("current_sal", ar_cs[JK]);
@@ -1023,9 +1056,10 @@ public class ActivityIndentForm extends BaseActivity implements View.OnClickList
                 }
                 else
                 {
-                    Intent it = new Intent(ActivityIndentForm.this, ActivityIndent.class);
+                    /*Intent it = new Intent(ActivityIndentForm.this, ActivityIndent.class);
                     it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(it);
+                    startActivity(it);*/   //local anil(plz add this line when include local db)
+                    Toast.makeText(getApplicationContext(), "No Internet Connection", Toast.LENGTH_SHORT).show();//local anil remove
                 }
 
             }
@@ -1246,7 +1280,7 @@ public class ActivityIndentForm extends BaseActivity implements View.OnClickList
                         String role=separated[1];
 
 
-                        String sss= db.update_ids_tfaformactivity(id,array_formactivity_id,String.valueOf(l.intValue()),
+                        /*String sss= db.update_ids_tfaformactivity(id,array_formactivity_id,String.valueOf(l.intValue()),
                                 al_localids_vill,String.valueOf(longsss.get(0)),InsertedApprovalServerData,name,role);
 
                         if(sss.equals("sucess"))
@@ -1254,17 +1288,34 @@ public class ActivityIndentForm extends BaseActivity implements View.OnClickList
                             Intent it = new Intent(ActivityIndentForm.this, ActivityIndent.class);
                             it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(it);
-                        }
+                        }*///local anil add
+
+                        Intent it = new Intent(ActivityIndentForm.this, ActivityIndent.class);
+                        it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(it);     //local anil remove
 
 
                     }
                     else if(obj.getString("Status").equals("error"))
                     {
+                        //local anil add remove
+                        /*Long l= new Long(ch);
+                        int i=l.intValue();
 
+                        db.DeleteTfaListDataRow(i);
+                        db.DeleteTfaVillageListDataRow(i);
+                        db.DeleteTfaApprovalListDataRow(i);*/
                         Toast(obj.getString("Status"));
                     }
                     else
                     {
+                       /* //local anil add remove
+                        Long l= new Long(ch);
+                        int i=l.intValue();
+                        Toast(obj.getString("Status"));
+                        db.DeleteTfaListDataRow(i);
+                        db.DeleteTfaVillageListDataRow(i);
+                        db.DeleteTfaApprovalListDataRow(i);*/
                         Toast("Something went wrong!!");
                     }
 
@@ -1357,5 +1408,13 @@ public class ActivityIndentForm extends BaseActivity implements View.OnClickList
         public void afterTextChanged(Editable editable) {
 
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent it=new Intent(ActivityIndentForm.this,ActivityIndent.class);
+        it.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(it);
     }
 }

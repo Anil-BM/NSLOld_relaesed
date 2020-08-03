@@ -98,7 +98,7 @@ public class NewSalesOrderChooseActivity extends AppCompatActivity {
     boolean  time_enabled=false;
 
     TextView tv_name, tv_code;
-    Spinner spin_user,spin_season, spin_company, spin_customer, spin_division, spin_scheme;
+    Spinner spin_user, spin_company, spin_customer, spin_division, spin_scheme;
     Button btn_savebooing;
 
     String sel_company_id, sel_customer_id, sel_product_id, sel_division_id, finalJson, company_id, customer_id, order_date, status, orderidfromserviceorder;
@@ -162,15 +162,15 @@ public class NewSalesOrderChooseActivity extends AppCompatActivity {
         tv_division = (TextView) findViewById(R.id.text_division);
         text_season = (TextView) findViewById(R.id.text_season);
         ll_line=(LinearLayout) findViewById(R.id.ll_line);
-        text_season.setVisibility(View.VISIBLE);
-        ll_line.setVisibility(View.VISIBLE);
+        text_season.setVisibility(View.GONE);//local anil
+        ll_line.setVisibility(View.GONE);//local anil
 
         spin_user = (Spinner) findViewById(R.id.spin_user);
-        spin_season = (Spinner) findViewById(R.id.spin_season);
+     //   spin_season = (Spinner) findViewById(R.id.spin_season);
         spin_company = (Spinner) findViewById(R.id.spin_company);
         spin_customer = (Spinner) findViewById(R.id.spin_customer);
         spin_division = (Spinner) findViewById(R.id.spin_division);
-        spin_season.setVisibility(View.VISIBLE);
+       // spin_season.setVisibility(View.VISIBLE);
         ArrayList<String> al_seasons=new ArrayList<>();
         al_seasons.add("Select Season");
         al_seasons.add("KHARIF"+"-"+ Calendar.getInstance().get(Calendar.YEAR));
@@ -178,7 +178,7 @@ public class NewSalesOrderChooseActivity extends AppCompatActivity {
         al_seasons.add("SPRING"+"-"+ Calendar.getInstance().get(Calendar.YEAR));
         al_seasons.add("VEGETABLES"+"-"+ Calendar.getInstance().get(Calendar.YEAR));
         al_seasons.add("SUMMER"+"-"+ Calendar.getInstance().get(Calendar.YEAR));
-        spin_season.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_item, R.id.customSpinnerItemTextView, al_seasons));
+       // spin_season.setAdapter(new ArrayAdapter<String>(getApplicationContext(), R.layout.spinner_item, R.id.customSpinnerItemTextView, al_seasons));
         auto_tv = (AutoCompleteTextView) findViewById(R.id.auto_tv);
 
         Typeface typeface = Typeface.createFromAsset(getAssets(), Constants.CUSTOM_FONT_PATH_LIGHT);
@@ -199,8 +199,8 @@ public class NewSalesOrderChooseActivity extends AppCompatActivity {
                         getIntent().getExtras().getString("selection") != null
                         && getIntent().getExtras().getString("selection", "defaultKey").equalsIgnoreCase("distributor"))
                 {
-                    if (sel_company_id == null || sel_company_id == "0" || sel_division_id == null || sel_division_id == "0"||spin_season.getSelectedItemPosition()==0) {
-                        Toast.makeText(NewSalesOrderChooseActivity.this, "Please select Company, Division,Season and go to booking ", Toast.LENGTH_SHORT).show();
+                    if (sel_company_id == null || sel_company_id == "0" || sel_division_id == null || sel_division_id == "0") {  //||spin_season.getSelectedItemPosition()==0
+                        Toast.makeText(NewSalesOrderChooseActivity.this, "Please select Company, Division and go to booking ", Toast.LENGTH_SHORT).show();
                     } /*else if (!isValidDivision()) {
                         Toast.makeText(NewSalesOrderChooseActivity.this, "Selected Division is not existed in the Active Season.", Toast.LENGTH_SHORT).show();
                     }*/ else {
@@ -224,7 +224,8 @@ public class NewSalesOrderChooseActivity extends AppCompatActivity {
                                 e.printStackTrace();
                             }
                         }
-                        if(time_enabled==true)
+                        //anil local
+                      /*  if(time_enabled==true)
                         {
                             if(spin_season.getSelectedItemPosition()==1)
                                 season="KHARIF"+"-"+ Calendar.getInstance().get(Calendar.YEAR);
@@ -235,24 +236,24 @@ public class NewSalesOrderChooseActivity extends AppCompatActivity {
                             if(spin_season.getSelectedItemPosition()==4)
                                 season="VEGETABLES"+"-"+ Calendar.getInstance().get(Calendar.YEAR);
                             if(spin_season.getSelectedItemPosition()==5)
-                                season="SUMMER"+"-"+ Calendar.getInstance().get(Calendar.YEAR);
+                                season="SUMMER"+"-"+ Calendar.getInstance().get(Calendar.YEAR);*/
 
                             Intent cropsproducts = new Intent(getApplicationContext(), CropsFragmentSalesorderActivity.class);
                             cropsproducts.putExtra("sel_user_id", sel_userId);
-                            cropsproducts.putExtra("season", season);
+                            cropsproducts.putExtra("season", "not now");
                             startActivity(cropsproducts);
 
-                            finish();
+                          /*  finish();
                         }
                         else {
                             Toast.makeText(getApplicationContext(),"Please enable auto date time option",Toast.LENGTH_LONG).show();
-                        }
+                        }*/
 
                     }
                 }
                 else
                 {
-                    if (sel_company_id == null || sel_company_id == "0" || sel_customer_id == null || sel_customer_id == "0" || sel_division_id == null || sel_division_id == "0"||spin_season.getSelectedItemPosition()==0 || !auto_tv.getText().toString().trim().equalsIgnoreCase(customername)) {
+                    if (sel_company_id == null || sel_company_id == "0" || sel_customer_id == null || sel_customer_id == "0" || sel_division_id == null || sel_division_id == "0" || !auto_tv.getText().toString().trim().equalsIgnoreCase(customername)) {
                         Toast.makeText(NewSalesOrderChooseActivity.this, "Please select Company, Customer, Season and Division and go to booking ", Toast.LENGTH_SHORT).show();
                     }/* else if (!isValidDivision()) {
                         Toast.makeText(NewSalesOrderChooseActivity.this, "Selected Division is not existed in the Active Season.", Toast.LENGTH_SHORT).show();
@@ -279,7 +280,7 @@ public class NewSalesOrderChooseActivity extends AppCompatActivity {
                         }
                         if(time_enabled==true)
                         {
-                            if(spin_season.getSelectedItemPosition()==1)
+                            /*if(spin_season.getSelectedItemPosition()==1)
                                 season="KHARIF"+"-"+ Calendar.getInstance().get(Calendar.YEAR);
                             if(spin_season.getSelectedItemPosition()==2)
                                 season="RABI"+"-"+ Calendar.getInstance().get(Calendar.YEAR);
@@ -288,11 +289,11 @@ public class NewSalesOrderChooseActivity extends AppCompatActivity {
                             if(spin_season.getSelectedItemPosition()==4)
                                 season="VEGETABLES"+"-"+ Calendar.getInstance().get(Calendar.YEAR);
                             if(spin_season.getSelectedItemPosition()==5)
-                                season="SUMMER"+"-"+ Calendar.getInstance().get(Calendar.YEAR);
+                                season="SUMMER"+"-"+ Calendar.getInstance().get(Calendar.YEAR);*/
 
                             Intent cropsproducts = new Intent(getApplicationContext(), CropsFragmentSalesorderActivity.class);
                             cropsproducts.putExtra("sel_user_id", sel_userId);
-                            cropsproducts.putExtra("season", season);
+                            cropsproducts.putExtra("season", "not now");
                             startActivity(cropsproducts);
                             finish();
                         }

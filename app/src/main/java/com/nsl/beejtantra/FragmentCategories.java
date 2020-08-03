@@ -13,6 +13,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.AsyncTask;
 import android.os.Build;
 import android.os.Bundle;
@@ -28,9 +30,11 @@ import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.nsl.beejtantra.FarmerCoupans.Activityfarmercoupon;
 import com.nsl.beejtantra.TFA.ActivityIndent;
+import com.nsl.beejtantra.TFA.FieldActivity;
 import com.nsl.beejtantra.TFA.Main2Activity;
 import com.nsl.beejtantra.advancebooking.AdvanceBookingMainActivity;
 import com.nsl.beejtantra.commonutils.Common;
@@ -42,6 +46,7 @@ import com.nsl.beejtantra.fieldestimation.FieldEstimationMainAcivity;
 import com.nsl.beejtantra.globalagrigenetics.GlobalAgrigeneticsActivity;
 import com.nsl.beejtantra.marketintelligence.MarketIntelligenceAcivity;
 import com.nsl.beejtantra.marketintelligencenew.MarketIntelligenceAcivityCopy;
+import com.nsl.beejtantra.orderindent.FragmentOrderIndent;
 import com.nsl.beejtantra.orderindent.OrderIndentMainActivity;
 import com.nsl.beejtantra.oreo.AlarmReceiver;
 import com.nsl.beejtantra.oreo.JobScheduleService;
@@ -391,12 +396,29 @@ public class FragmentCategories extends Fragment implements View.OnClickListener
                     startActivity(godown);
                 }
                 else if (name.equalsIgnoreCase(Constants.Names.Activity_PLANNER)) {
-                    Intent godown = new Intent(getActivity(), ActivityIndent.class);
-                    startActivity(godown);
+
+                    if (Common.haveInternet(getActivity())) {
+                        Intent godown = new Intent(getActivity(), ActivityIndent.class);
+                        startActivity(godown);
+
+                    }
+                    else
+                    {
+                        Toast.makeText(getActivity(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
                 else if (name.equalsIgnoreCase(Constants.Names.Field_Activity)) {
-                    Intent godown = new Intent(getActivity(), Activityfarmercoupon.class);
-                    startActivity(godown);
+                    if (Common.haveInternet(getActivity())) {
+                        Intent godown = new Intent(getActivity(), FieldActivity.class);
+                        startActivity(godown);
+
+                    }
+                    else
+                    {
+                        Toast.makeText(getActivity(), "No Internet Connection", Toast.LENGTH_SHORT).show();
+                    }
+
                 }
 
             }

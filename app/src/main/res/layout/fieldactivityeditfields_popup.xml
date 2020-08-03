@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical"
+
+    android:paddingBottom="@dimen/_10sdp">
+
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="@color/colorPrimary"
+        app:title=""
+        app:titleTextColor="@color/white">
+
+        <com.nsl.beejtantra.commonutils.CustomTextViewBold
+            android:id="@+id/toolbar_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="left"
+            android:text="Field Activity"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_16sdp"
+            android:textStyle="bold" />
+
+
+
+    </android.support.v7.widget.Toolbar>
+    <LinearLayout
+        android:id="@+id/ll"
+        android:layout_margin="@dimen/_17sdp"
+        android:layout_below="@+id/toolbar"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <RelativeLayout
+            android:layout_marginTop="@dimen/_20sdp"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_36sdp"
+            android:visibility="gone"
+            android:layout_weight=".28"
+            android:background="@drawable/spinner_border"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/sp_crop"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_36sdp"
+                android:layout_centerVertical="true"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:layout_marginLeft="5dp"
+                android:spinnerMode="dropdown" />
+
+            <ImageView
+
+                android:layout_width="10dp"
+                android:layout_height="10dp"
+                android:layout_alignRight="@+id/sp_crop"
+                android:layout_centerVertical="true"
+                android:layout_marginRight="10dp"
+                android:src="@drawable/drop" />
+
+        </RelativeLayout>
+        <EditText
+
+            android:gravity="center"
+            android:id="@+id/et_date"
+            android:textColor="@color/black"
+            android:focusable="false"
+            android:background="#00000000"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:textColorHint="#123456"
+            android:textSize="@dimen/_12sdp"
+            android:inputType="textMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_36sdp"
+            android:hint="Conducted Date"/>
+        <include layout="@layout/line_view" />
+        <EditText
+
+            android:gravity="center"
+            android:id="@+id/et_place"
+            android:textColor="@color/black"
+            android:background="#00000000"
+            android:layout_marginTop="@dimen/_6sdp"
+            android:textColorHint="#123456"
+            android:textSize="@dimen/_12sdp"
+            android:inputType="textMultiLine"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_36sdp"
+            android:hint="Conducted Place"/>
+        <include layout="@layout/line_view" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="bottom"
+            android:layout_margin="@dimen/_25sdp"
+            android:layout_marginTop="@dimen/_25sdp"
+            android:padding="@dimen/_3sdp"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <com.nsl.beejtantra.ButtonPlus
+                android:id="@+id/btn_save"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_36sdp"
+                android:layout_weight="1"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:background="@color/green"
+                android:textSize="@dimen/_12sdp"
+                android:text="@string/submit"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"/>
+
+            <com.nsl.beejtantra.ButtonPlus
+                android:id="@+id/btn_cancel"
+                android:layout_width="0dp"
+                android:layout_height="@dimen/_36sdp"
+                android:layout_weight="1"
+                android:layout_marginTop="@dimen/_12sdp"
+                android:layout_marginLeft="@dimen/_8sdp"
+                android:background="@color/colorPrimary"
+                android:text="@string/cast_tracks_chooser_dialog_cancel"
+                android:textSize="@dimen/_12sdp"
+                android:gravity="center"
+                android:textAllCaps="true"
+                android:textColor="@color/white"/>
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+</RelativeLayout>

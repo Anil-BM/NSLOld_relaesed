@@ -210,7 +210,8 @@ public class CropsFragmentSalesorderActivity extends AppCompatActivity implement
         if (getIntent().getExtras() != null)
         {
             sel_user_id = getIntent().getExtras().getString("sel_user_id", "");
-            season = getIntent().getExtras().getString("season", "");
+            //season = getIntent().getExtras().getString("season", "");local anil
+            season="not";
         }
         globalGroup.clear();
         btn_submitproducts = (Button) findViewById(R.id.btn_submitproducts);
@@ -259,8 +260,8 @@ public class CropsFragmentSalesorderActivity extends AppCompatActivity implement
         customer_id = sharedpreferences.getString("customer_id", "");
         division_id = sharedpreferences.getString("division_id", "");
 
-
-        new Async_getcreditlimit().execute();
+        new Async_getalloffline().execute();
+        //new Async_getcreditlimit().execute();local anil
        // new Async_getSalesOrderAmount().execute();
         et_booked_amount.setText("" + tokenAount);
 
@@ -268,8 +269,8 @@ public class CropsFragmentSalesorderActivity extends AppCompatActivity implement
             @Override
             public void onClick(View view) {
 
-                if (Common.haveInternet(getApplicationContext())&&(Double.valueOf((et_creditlimit.getText().toString())))
-                        >=(Double.valueOf(et_booked_amount.getText().toString()))) {
+                if (Common.haveInternet(getApplicationContext())) {/*&&(Double.valueOf((et_creditlimit.getText().toString())))
+                        >=(Double.valueOf(et_booked_amount.getText().toString()))*/ //local anil
                     Handler handler = Common.disableClickEvent(btn_submitproducts, true);
                     String outstandingamount = et_outstandingamount.getText().toString();
                     String creditlimit = et_creditlimit.getText().toString();
@@ -334,7 +335,7 @@ public class CropsFragmentSalesorderActivity extends AppCompatActivity implement
                                 advBookObj.put("CompanyID", globalGroup.get(0).company_id);
                                 advBookObj.put("customer_id", globalGroup.get(0).costumer_id);
                                 advBookObj.put("DivisionID", globalGroup.get(0).devison_id);
-                                advBookObj.put("season_name", season);
+                                //advBookObj.put("season_name", season);local anil
 
                                 String selectQuerys = "SELECT  " + KEY_TABLE_SERVICEORDER_ID + " FROM " + TABLE_SERVICEORDER + " ORDER BY " + KEY_TABLE_SERVICEORDER_ID + " DESC LIMIT 1 ";
                                 sdbw = db.getWritableDatabase();
@@ -477,15 +478,15 @@ public class CropsFragmentSalesorderActivity extends AppCompatActivity implement
                 }
                 else
                 {
-                    if((Double.valueOf((et_creditlimit.getText().toString())))
+                   /* if((Double.valueOf((et_creditlimit.getText().toString())))
                             <(Double.valueOf(et_booked_amount.getText().toString())))
                     {
-                        showAlert("Order value shouldn't exceed creditlimit");
-                    }
-                   else {
+                        showAlert("Order value shouldn't exceed creditlimit"); //local anil
+                    }*/
+                  /* else {*/
                         showAlert("Internet connection not found!");
                         Toast.makeText(getApplicationContext(), "Internet connection not found!", Toast.LENGTH_LONG).show();
-                    }
+                   /* }*/
                 }
 
 

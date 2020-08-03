@@ -2099,15 +2099,25 @@ public class MainActivity extends NetworkChangeListenerActivity
 
             if (jsonData != null) {
                 try {
-
                     JSONObject companyarray = new JSONObject(jsonData);
+                    JSONArray tfa_list_data=companyarray.getJSONArray("tfa_list_data");
+
+                    if(companyarray.get("Status").equals("error"))
+                    {
+                        if(tfa_list_data.length()==0)
+                        {
+                            db.deleteDataByTableName(TABLE_TFA_ACTIVITYLIST);
+                            db.deleteDataByTableName(TABLE_TFA_VILLAGELIST);
+                            db.deleteDataByTableName(TABLE_TFA_APPROVAL_HISTORY);
+                        }
+                    }
                     if(companyarray.get("Status").equals("Success"))
                     {
                         db.deleteDataByTableName(TABLE_TFA_ACTIVITYLIST);
                         db.deleteDataByTableName(TABLE_TFA_VILLAGELIST);
                         db.deleteDataByTableName(TABLE_TFA_APPROVAL_HISTORY);
 
-                        JSONArray tfa_list_data=companyarray.getJSONArray("tfa_list_data");
+
                         for(int i=0;i<tfa_list_data.length();i++)
                         {
 

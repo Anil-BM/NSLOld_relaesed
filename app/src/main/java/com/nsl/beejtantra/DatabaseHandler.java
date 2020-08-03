@@ -17,6 +17,7 @@ import com.nsl.beejtantra.TFA.Approvaldetails;
 import com.nsl.beejtantra.TFA.Demandgeneation;
 import com.nsl.beejtantra.TFA.Demandgeneration_add;
 import com.nsl.beejtantra.TFA.Village_list;
+import com.nsl.beejtantra.TFA.support.ActivityPlanner2;
 import com.nsl.beejtantra.TFA.support.tfaactivitylist;
 import com.nsl.beejtantra.commonutils.Common;
 import com.nsl.beejtantra.complaints.Complaints;
@@ -92,7 +93,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private final Context context;
     // All Static variables
     // Database Version
-    private static final int DATABASE_VERSION = 58;
+    private static final int DATABASE_VERSION = 59;
 
     // Database Name
     private static final String DATABASE_NAME = "NSL.db";
@@ -1152,7 +1153,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public static final String KEY_non_used_farmers= "non_used_farmers";
     public static final String KEY_actual_no_farmers= "actual_no_farmers";
     public static final String KEY_actual__estimation_per_head= "actual__estimation_per_head";
-    public static final String KEY_actual__total_expences= "actual__total_expences";
+    public static final String KEY_actual__total_expences= "actual_total_expences";
     public static final String KEY_location_lat_lng= "location_lat_lng";
     public static final String KEY_owner_number= "owner_number";
     public static final String KEY_owner_name= "owner_name";
@@ -10333,7 +10334,21 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.delete(TABLE_FARMERS, KEY_TABLE_FARMER_PRIMARY_ID + "=?", new String[]{String.valueOf(mobile_id)});
         db.close();
     }
-
+    public void DeleteTfaListDataRow(int list_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_TFA_ACTIVITYLIST, KEY_tfa_list_id+ "=?", new String[]{String.valueOf(list_id)});
+        db.close();
+    }
+    public void DeleteTfaVillageListDataRow(int list_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_TFA_VILLAGELIST, KEY_tfa_list_id+ "=?", new String[]{String.valueOf(list_id)});
+        db.close();
+    }
+    public void DeleteTfaApprovalListDataRow(int list_id) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(TABLE_TFA_APPROVAL_HISTORY, KEY_tfa_list_id+ "=?", new String[]{String.valueOf(list_id)});
+        db.close();
+    }
     public List<StockDispatchLineItem> getStockDispatchLineItems(int cropId, int productId) {
         SQLiteDatabase db = this.getWritableDatabase();
         List<StockDispatchLineItem> sdls = new ArrayList<>();
@@ -11122,7 +11137,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close(); // Closing database connection
         return  i;
     }
-    public long addVillageList(Village_list village_list, String type) {
+    public long addVillageList(Village_list village_list, String type) {//server to local api mainact ,actindent
         int k=0;
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -11161,7 +11176,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         return  i;
     }
     public String updatetfa_approval(Approvaldetails approvaldetails,String type)
-    {
+    {                                                                          //server to local api mainact ,actindent
         String sts="";
         SQLiteDatabase db = this.getWritableDatabase();
 
@@ -11175,11 +11190,11 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         ContentValues values_approvaltable = new ContentValues();
         values_approvaltable.put(KEY_tfa_approval_id, approvaldetails.getTfa_approval_id());
+        values_approvaltable.put(KEY_tfa_list_id, approvaldetails.getList_id());
         values_approvaltable.put(KEY_tfa_approval_status, approvaldetails.getApproval_status());
         values_approvaltable.put(KEY_tfa_approval_comment, approvaldetails.getApproval_comments());
         values_approvaltable.put(KEY_tfa_approved_user_id, approvaldetails.getTfa_approved_user_id());
         values_approvaltable.put(KEY_status, approvaldetails.getStatus());
-        values_approvaltable.put(KEY_tfa_list_id, approvaldetails.getList_id());
         values_approvaltable.put(KEY_created_datetime, approvaldetails.getCreated_datetime());
         values_approvaltable.put(KEY_updated_datetime, approvaldetails.getUpdated_datetime());
         values_approvaltable.put(KEY_tfa_approval_name, approvaldetails.getApproval_name());
@@ -11517,5 +11532,70 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.close();
 
         return  status;
+    }
+    public List<Approvaldetails> getOrderApprovalsByTfaListId(String listId) {
+        List<Approvaldetails> soaList = new ArrayList<Approvaldetails>();
+        Approvaldetails soa = null;
+        // Select All Query
+        String selectQuery = "SELECT "+KEY_tfa_pending_by_name+","+KEY_tfa_pending_by_role+","+
+                KEY_tfa_approval_status+","+KEY_tfa_approval_name+","+
+                KEY_tfa_approval_role+" FROM " + TABLE_TFA_APPROVAL_HISTORY +
+                " WHERE (" + KEY_tfa_approval_status + " >4 " + " or " +KEY_tfa_approval_status + " =9 )"+ " and "+ KEY_tfa_list_id+"="+listId+" ORDER BY " + KEY_tfa_approval_id +" ASC ";
+        Log.d("bdquery", selectQuery);
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+
+                Approvaldetails approvaldetails=new Approvaldetails(cursor.getString(0),
+                        cursor.getString(1),cursor.getInt(2),cursor.getString(3),cursor.getString(4));
+                soaList.add(approvaldetails);
+
+
+            } while (cursor.moveToNext());
+        }
+
+        // return contact list
+        return soaList;
+
+    }
+    public long addPlannerActivity2(ActivityPlanner2 activityPlanner2, String type) {
+        int k=0;
+        SQLiteDatabase db = this.getWritableDatabase();
+        try {
+            ContentValues contentValues = new ContentValues();
+            contentValues.put(KEY_used_farmers, activityPlanner2.getUsed_farmers());
+            contentValues.put(KEY_non_used_farmers, activityPlanner2.getNon_used_farmers());
+            contentValues.put(KEY_actual_no_farmers, activityPlanner2.getActual_no_farmers());
+            contentValues.put(KEY_actual__estimation_per_head, activityPlanner2.getActual_estimation_per_head());
+            contentValues.put(KEY_actual__total_expences, activityPlanner2.getActual_total_expences());
+            contentValues.put(KEY_location_lat_lng, activityPlanner2.getLocation_lat_lang());
+            contentValues.put(KEY_owner_name, activityPlanner2.getOwner_name());
+            contentValues.put(KEY_owner_number, activityPlanner2.getOwner_number());
+            long i=db.update(TABLE_TFA_ACTIVITYLIST ,contentValues, KEY_tfa_list_id + "=?", new String[]{String.valueOf(activityPlanner2.getTfa_list_id())});
+
+
+            if(i>0)
+            {
+                k=1;
+                Log.d("anil_TABLE_TFA_ACTIVITYLISTsecond",String.valueOf(i));
+            }
+            if(i<0)
+            {
+                k=0;
+                Log.d("anil_TABLE_TFA_ACTIVITYLISTsecond",String.valueOf(i));
+            }
+
+            db.close(); // Closing database connection
+        }catch (NullPointerException ex)
+        {
+            Log.e("error",ex.getMessage());
+        }
+
+        // Inserting Row
+
+        return  k;
     }
 }
