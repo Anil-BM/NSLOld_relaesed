@@ -733,17 +733,17 @@ public class CropsFragmentSalesorderActivity extends AppCompatActivity implement
                                 @Override
                                 public void onClick(DialogInterface dialog,
                                                     int which) {
-                                    /*Intent adv = new Intent(getApplicationContext(), ViewSalesOrderCompanyActivity.class);
-                                    //adv.putExtra(REQUEST_TYPE, 1);
+                                    Intent adv = new Intent(getApplicationContext(), ViewSalesOrderCompanyActivity.class);
+                                    adv.putExtra(REQUEST_TYPE, 1);
                                     startActivity(adv);
-                                    finish();*/
+                                    finish();
                                     dialog.dismiss();
 
 
                                    // fm = getSupportFragmentManager();
 
-                                    ft = fm.beginTransaction().replace(R.id.content_frame, new FragmentOrderIndent());
-                                    ft.commit();
+                                    /*ft = fm.beginTransaction().replace(R.id.content_frame, new FragmentOrderIndent());
+                                    ft.commit();*/   //local anil
 
                                 }
                             });

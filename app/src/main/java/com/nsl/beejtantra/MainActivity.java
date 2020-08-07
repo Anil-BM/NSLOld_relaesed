@@ -44,6 +44,10 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.work.OneTimeWorkRequest;
+import androidx.work.WorkManager;
+import androidx.work.WorkRequest;
+
 import com.google.android.gms.common.api.PendingResult;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.common.api.Status;
@@ -1193,7 +1197,7 @@ public class MainActivity extends NetworkChangeListenerActivity
 
     }
 
-    private class Async_getalldivisions extends AsyncTask<Void, Void, String> {
+    private class Async_getalldivisions extends AsyncTask<Void, Void, String> {//insert only   0
 
         @Override
         protected void onPreExecute() {
@@ -1293,7 +1297,7 @@ public class MainActivity extends NetworkChangeListenerActivity
 
     }
 
-    private class Async_getallcompanies extends AsyncTask<Void, Void, String> {
+    private class Async_getallcompanies extends AsyncTask<Void, Void, String> {//insert only   1
 
         @Override
         protected void onPreExecute() {
@@ -1394,7 +1398,7 @@ public class MainActivity extends NetworkChangeListenerActivity
         }
     }
 
-    private void callSeasons() {
+    private void callSeasons() {//insert only   2
         MyApplication.getInstance().getRetrofitAPI().getSeasons().enqueue(new Callback<SeasonResVo>() {
             @Override
             public void onResponse(Call<SeasonResVo> call, retrofit2.Response<SeasonResVo> response) {
@@ -1428,7 +1432,7 @@ public class MainActivity extends NetworkChangeListenerActivity
         });
     }
 
-    private void callcrops() {
+    private void callcrops() {//insert only   3
         try {
             ConnectivityManager conMgr = (ConnectivityManager) getApplicationContext()
                     .getSystemService(Context.CONNECTIVITY_SERVICE);
@@ -1453,7 +1457,7 @@ public class MainActivity extends NetworkChangeListenerActivity
         }
     }
 
-    private class Async_getallcrops extends AsyncTask<Void, Void, String> {
+    private class Async_getallcrops extends AsyncTask<Void, Void, String> {//insert only   4
 
         @Override
         protected void onPreExecute() {
@@ -1574,7 +1578,7 @@ public class MainActivity extends NetworkChangeListenerActivity
     }
 
 
-    private class Async_getallreions extends AsyncTask<Void, Void, String> {
+    private class Async_getallreions extends AsyncTask<Void, Void, String> {//insert only   5
 
         @Override
         protected void onPreExecute() {
@@ -1686,7 +1690,7 @@ public class MainActivity extends NetworkChangeListenerActivity
         }
     }
 
-    private class Async_getallDistricts extends AsyncTask<Void, Void, String> {
+    private class Async_getallDistricts extends AsyncTask<Void, Void, String> {//insert only   6
 
         @Override
         protected void onPreExecute() {
@@ -1800,7 +1804,7 @@ public class MainActivity extends NetworkChangeListenerActivity
         }
     }
 
-    private class Async_getallproducts extends AsyncTask<Void, Void, String> {
+    private class Async_getallproducts extends AsyncTask<Void, Void, String> {//insert only   7
 
         @Override
         protected void onPreExecute() {
@@ -1910,7 +1914,7 @@ public class MainActivity extends NetworkChangeListenerActivity
     }
 
 
-    private class Async_getallproducts_price extends AsyncTask<Void, Void, String> {
+    private class Async_getallproducts_price extends AsyncTask<Void, Void, String> {//insert only   9
 
         protected String doInBackground(Void... params) {
 
@@ -2000,7 +2004,7 @@ public class MainActivity extends NetworkChangeListenerActivity
 
         }
     }
-    private void gettfaactivitylist() {
+    private void gettfaactivitylist() {//insert only   8
 
         MyApplication.getInstance().getRetrofitAPI().gettfaactivitylist("tfa_activity_master").enqueue(new Callback<res_tfa_activities_masterd>() {
             @Override
@@ -2046,7 +2050,7 @@ public class MainActivity extends NetworkChangeListenerActivity
         });
     }
 
-    private class Async_gettfalist extends AsyncTask<Void, Void, String> {
+    private class Async_gettfalist extends AsyncTask<Void, Void, String> {//insert only   9
 
         @Override
         protected void onPreExecute() {
@@ -2240,7 +2244,7 @@ public class MainActivity extends NetworkChangeListenerActivity
             new Async_getallproducts_price().execute();
         }
     }
-    private class Async_getallschemes extends AsyncTask<Void, Void, String> {
+    private class Async_getallschemes extends AsyncTask<Void, Void, String> {//insert only   10(insert,update)
 
         @Override
         protected void onPreExecute() {
@@ -2363,7 +2367,7 @@ public class MainActivity extends NetworkChangeListenerActivity
     }
 
 
-    private class Async_getallusers extends AsyncTask<Void, Void, String> {
+    private class Async_getallusers extends AsyncTask<Void, Void, String> {//insert only   11(insert,update)
 
         private String userStatus = "1";
 
@@ -2501,7 +2505,7 @@ public class MainActivity extends NetworkChangeListenerActivity
         }
     }
 
-    private class Async_getUserRegions extends AsyncTask<Void, Void, String> {
+    private class Async_getUserRegions extends AsyncTask<Void, Void, String> {//insert only   12(insert,update)
 
         @Override
         protected void onPreExecute() {
@@ -2622,7 +2626,7 @@ public class MainActivity extends NetworkChangeListenerActivity
         }
     }
 
-    private class Async_getallcustomers extends AsyncTask<Void, Void, String> {
+    private class Async_getallcustomers extends AsyncTask<Void, Void, String> {//insert only   13(insert,update)
 
         @Override
         protected void onPreExecute() {
@@ -2777,7 +2781,7 @@ public class MainActivity extends NetworkChangeListenerActivity
     }
 
 
-    private class Async_getallcdc extends AsyncTask<Void, Void, String> {
+    private class Async_getallcdc extends AsyncTask<Void, Void, String> {//insert only   14
 
         @Override
         protected void onPreExecute() {
@@ -2897,7 +2901,7 @@ public class MainActivity extends NetworkChangeListenerActivity
     }
 
 
-    private class Async_getallucd extends AsyncTask<Void, Void, String> {
+    private class Async_getallucd extends AsyncTask<Void, Void, String> {//insert only   15(insert,update)
 
         @Override
         protected void onPreExecute() {
@@ -2981,7 +2985,7 @@ public class MainActivity extends NetworkChangeListenerActivity
         }
     }
 
-    private class Async_getallucc extends AsyncTask<Void, Void, String> {
+    private class Async_getallucc extends AsyncTask<Void, Void, String> {//insert only   16(insert,update)
 
         @Override
         protected void onPreExecute() {
@@ -3080,7 +3084,7 @@ public class MainActivity extends NetworkChangeListenerActivity
 
     }
 
-    public class Async_getallserviceorders extends AsyncTask<Void, Void, String> {
+    public class Async_getallserviceorders extends AsyncTask<Void, Void, String> {//insert only   17(insert,update)
         ProgressDialog progressDialog;
         private SQLiteDatabase sdbw;
 
@@ -3277,7 +3281,7 @@ public class MainActivity extends NetworkChangeListenerActivity
         }
     }
 
-    public class Async_getallServiceOrderApprovals extends AsyncTask<Void, Void, String> {
+    public class Async_getallServiceOrderApprovals extends AsyncTask<Void, Void, String> {//insert only   18(insert,update)
         ProgressDialog progressDialog;
         private SQLiteDatabase sdbw;
 
@@ -3532,7 +3536,7 @@ public class MainActivity extends NetworkChangeListenerActivity
         }
     }*/
 
-    private class Async_getallevm extends AsyncTask<Void, Void, String> {
+    private class Async_getallevm extends AsyncTask<Void, Void, String> {//insert only   19(insert,update)
 
         @Override
         protected void onPreExecute() {
@@ -3680,7 +3684,7 @@ public class MainActivity extends NetworkChangeListenerActivity
         }
     }
 
-    private class Async_getPaymentCollection extends AsyncTask<Void, Void, String> {
+    private class Async_getPaymentCollection extends AsyncTask<Void, Void, String> {//insert only   20
 
         @Override
         protected void onPreExecute() {
@@ -3782,7 +3786,7 @@ public class MainActivity extends NetworkChangeListenerActivity
     }
 
 
-    private class Async_getAllGrade extends AsyncTask<Void, Void, String> {
+    private class Async_getAllGrade extends AsyncTask<Void, Void, String> {//insert only   21(insert,update)
 
         @Override
         protected void onPreExecute() {
@@ -3871,7 +3875,7 @@ public class MainActivity extends NetworkChangeListenerActivity
     }
 
 
-    public class Async_getallFeedback extends AsyncTask<Void, Void, String> {
+    public class Async_getallFeedback extends AsyncTask<Void, Void, String> {//insert only   22
 
         @Override
         protected void onPreExecute() {
@@ -3977,7 +3981,7 @@ public class MainActivity extends NetworkChangeListenerActivity
     }
 
 
-    public class Async_getallComplaints extends AsyncTask<Void, Void, String> {
+    public class Async_getallComplaints extends AsyncTask<Void, Void, String> {//insert only   23
 
         @Override
         protected void onPreExecute() {
@@ -4117,7 +4121,7 @@ public class MainActivity extends NetworkChangeListenerActivity
 
     }
 
-    public class Async_getAlldistributorRetailers extends AsyncTask<Void, Void, String> {
+    public class Async_getAlldistributorRetailers extends AsyncTask<Void, Void, String> {//insert only   24(insert,update)
 
         @Override
         protected void onPreExecute() {
@@ -4234,7 +4238,7 @@ public class MainActivity extends NetworkChangeListenerActivity
 
     }
 
-    public class Async_getAllFarmers extends AsyncTask<Void, Void, String> {
+    public class Async_getAllFarmers extends AsyncTask<Void, Void, String> {//insert only   25(insert,update)
 
         @Override
         protected void onPreExecute() {
@@ -4343,7 +4347,7 @@ public class MainActivity extends NetworkChangeListenerActivity
 
     }
 
-    public class Async_getMarketPotentials extends AsyncTask<Void, Void, String> {
+    public class Async_getMarketPotentials extends AsyncTask<Void, Void, String> {//insert only   26(insert,update)
 
         @Override
         protected void onPreExecute() {
@@ -4443,7 +4447,7 @@ public class MainActivity extends NetworkChangeListenerActivity
 
     }
 
-    public class Async_getCompetitorChannels extends AsyncTask<Void, Void, String> {
+    public class Async_getCompetitorChannels extends AsyncTask<Void, Void, String> {//insert only   28(insert,update)
 
         @Override
         protected void onPreExecute() {
@@ -4549,7 +4553,7 @@ public class MainActivity extends NetworkChangeListenerActivity
 
     }
 
-    public class Async_getCompetitorStrength extends AsyncTask<Void, Void, String> {
+    public class Async_getCompetitorStrength extends AsyncTask<Void, Void, String> {//insert only   27(insert,update)
 
         @Override
         protected void onPreExecute() {
@@ -4640,7 +4644,7 @@ public class MainActivity extends NetworkChangeListenerActivity
 
     }
 
-    public class Async_getChannelPreference extends AsyncTask<Void, Void, String> {
+    public class Async_getChannelPreference extends AsyncTask<Void, Void, String> {//insert only   28(insert,update)
 
         @Override
         protected void onPreExecute() {
@@ -4741,7 +4745,7 @@ public class MainActivity extends NetworkChangeListenerActivity
 
     }
 
-    public class Async_getCommodityPrice extends AsyncTask<Void, Void, String> {
+    public class Async_getCommodityPrice extends AsyncTask<Void, Void, String> {//insert only   29(insert,update)
 
         @Override
         protected void onPreExecute() {
@@ -4832,7 +4836,7 @@ public class MainActivity extends NetworkChangeListenerActivity
 
     }
 
-    public class Async_getCropShifts extends AsyncTask<Void, Void, String> {
+    public class Async_getCropShifts extends AsyncTask<Void, Void, String> {//insert only   30(insert,update)
 
         @Override
         protected void onPreExecute() {
@@ -4926,7 +4930,7 @@ public class MainActivity extends NetworkChangeListenerActivity
 
     }
 
-    public class Async_getProductPricingSurvey extends AsyncTask<Void, Void, String> {
+    public class Async_getProductPricingSurvey extends AsyncTask<Void, Void, String> {//insert only   31(insert,update)
 
         @Override
         protected void onPreExecute() {
@@ -5025,7 +5029,7 @@ public class MainActivity extends NetworkChangeListenerActivity
 
     }
 
-    private void saveStockDispatch() {
+    private void saveStockDispatch() {                        //insert only   32(insert,update for only TABLE_STOCK_DISPATCH)
         MyApplication.getInstance().getRetrofitAPI().getStockDispatch(team).enqueue(new Callback<StockDispatchResp>() {
             @Override
             public void onResponse(Call<StockDispatchResp> call, retrofit2.Response<StockDispatchResp> response) {
@@ -5216,7 +5220,7 @@ public class MainActivity extends NetworkChangeListenerActivity
 
     }
 
-    public class Async_getAllStockReturns extends AsyncTask<Void, Void, String> {
+    public class Async_getAllStockReturns extends AsyncTask<Void, Void, String> { //insert only   33
 
         @Override
         protected void onPreExecute() {
@@ -5421,8 +5425,25 @@ public class MainActivity extends NetworkChangeListenerActivity
 //                            boolean isDefault = str_password.equalsIgnoreCase("password") ? true : false;
 //                            Common.saveDataInSP(LoginActivity.this, Constants.SharedPrefrancesKey.IS_DEFAULT_PASSWORD, isDefault);
                             if (syncType == 1) {
+                                List<OneTimeWorkRequest> works = null;
+                               new Async_getalldivisions().execute();
+                            /*    OneTimeWorkRequest someWork = new OneTimeWorkRequest.Builder(MasterdataSync.class)
+                                        .build();
 
-                                new Async_getalldivisions().execute();
+                                OneTimeWorkRequest someWork2 = new OneTimeWorkRequest.Builder(MasterdataSync.class)
+                                        .build();
+
+                                OneTimeWorkRequest someWork3 = new OneTimeWorkRequest.Builder(MasterdataSync.class)
+                                        .build();
+
+                                OneTimeWorkRequest someWork4 = new OneTimeWorkRequest.Builder(MasterdataSync.class)
+                                        .build();
+
+
+                                WorkManager
+                                        .getInstance()
+                                        .beginWith(Arrays.asList(someWork,someWork2,someWork3,someWork4))
+                                        .enqueue();*/
 
                             } else if (syncType == 2) {
                                 try {

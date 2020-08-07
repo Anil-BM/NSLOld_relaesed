@@ -23,17 +23,17 @@ public class Constants {
     public static final String B_URL_PRODUCT_CATALOGUE = "http://suprasoftapp.com/nsl_dev/";
 */
 
-    public static final String IMAGE_URL = "http://devapp.nslsaathi.com/";
+  /*  public static final String IMAGE_URL = "http://devapp.nslsaathi.com/";
     public static final String BASE_URL = "http://devapp.nslsaathi.com/Api";
     public static final String URL_NSL_MAIN = "http://devapp.nslsaathi.com/Api/";
     public static final String BASE_URL_SHECHES_IMAGE = "http://devapp.nslsaathi.com/uploads/schemas/";
-    public static final String B_URL_PRODUCT_CATALOGUE = "http://devapp.nslsaathi.com/";
+    public static final String B_URL_PRODUCT_CATALOGUE = "http://devapp.nslsaathi.com/";*/
 
-   /* public static final String IMAGE_URL = "http://nslbeejtantra.com/";
+    public static final String IMAGE_URL = "http://nslbeejtantra.com/";
     public static final String BASE_URL = "http://nslbeejtantra.com/Api";
     public static final String URL_NSL_MAIN = "http://nslbeejtantra.com/Api/";
     public static final String BASE_URL_SHECHES_IMAGE = "http://nslbeejtantra.com/uploads/schemas/";
-    public static final String B_URL_PRODUCT_CATALOGUE = "http://nslbeejtantra.com/";*/
+    public static final String B_URL_PRODUCT_CATALOGUE = "http://nslbeejtantra.com/";
 
     /* public static final String IMAGE_URL = "http://13.127.129.100/";
    public static final String BASE_URL = "http://13.127.129.100/Api";

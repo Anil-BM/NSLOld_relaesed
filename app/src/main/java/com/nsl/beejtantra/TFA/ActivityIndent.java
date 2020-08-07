@@ -429,15 +429,26 @@ public class ActivityIndent extends NetworkChangeListenerActivity  {
                 @Override
                 public void onClick(View v) {
                     if (Common.haveInternet(getApplicationContext())) {
-                        if(selectDistributor.getSelectedItemPosition()!=0) {
-                            ArrayList<HashMap<String, String>> favouriteItem2 = new ArrayList<HashMap<String, String>>();
-                            favouriteItem2.add(favouriteItem.get(position));
+                        if(favouriteItem.get(position).get("tfa_title")!=null)
+                        {
+                            if (selectDistributor.getSelectedItemPosition() != 0) {
+                                ArrayList<HashMap<String, String>> favouriteItem2 = new ArrayList<HashMap<String, String>>();
+                                favouriteItem2.add(favouriteItem.get(position));
 
 
-                            Intent intent = new Intent(ActivityIndent.this, DetailledActivtylist.class);
-                            intent.putExtra("favouriteItem", favouriteItem2);
+                                Intent intent = new Intent(ActivityIndent.this, DetailledActivtylist.class);
+                                intent.putExtra("favouriteItem", favouriteItem2);
+                                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                                startActivity(intent);
+                            }
+
+                        }
+                        else {
+                            Toast.makeText(getApplicationContext(),"Please apply Data Syncing and come back",Toast.LENGTH_LONG).show();
+                            Intent intent = new Intent(ActivityIndent.this, MainActivity.class);
                             intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                             startActivity(intent);
+
                         }
 
                     }
